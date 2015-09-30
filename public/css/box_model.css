@@ -1,0 +1,96 @@
+h1 {
+	margin-bottom: 50px;
+}
+
+#container {
+	margin-top: 50px;
+	width: 500px;
+	position: relative;
+}
+
+#first {
+	position: relative;
+}
+
+#second {
+	position: relative;
+	top: 20px;
+
+}
+
+div>img {
+	position: absolute;
+	top: -35px;
+	left: 60px;
+}
+
+.red {
+	color: white;
+	background-color: red;
+	border: 1px solid black;
+	width: 50px;
+	height: 50px;
+	padding: 12px;
+	float: left;
+	position: absolute;
+}
+
+
+.orange {
+	color: white;
+	background-color: orange;
+	border: 1px solid black;
+	width: 50px;
+	height: 50px;
+	padding: 12px;
+	position: absolute;
+	top: 0px;
+	right: 300px;
+}
+
+.yellow {
+	color: white;
+	background-color: yellow;
+	border: 1px solid black;
+	width: 50px;
+	height: 50px;
+	padding: 12px;
+	right: 172px;
+	position: absolute;
+}
+
+.green {
+	color: white;
+	background-color: green;
+	border: 1px solid black;
+	width: 50px;
+	height: 50px;
+	padding: 12px;
+	top: 100px;
+	left: 0px;
+	position: absolute;
+}
+
+.blue {
+	color: white;
+	background-color: blue;
+	border: 1px solid black;
+	width: 50px;
+	height: 50px;
+	padding: 12px;
+	top: 100px;
+	left: 122px;
+	position: absolute;
+}
+
+.purple {
+	color: white;
+	background-color: purple;
+	border: 1px solid black;
+	width: 50px;
+	height: 50px;
+	padding: 12px;
+	top: 100px;
+	left: 252px;
+	position: absolute;
+}

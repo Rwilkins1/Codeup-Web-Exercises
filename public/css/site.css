@@ -1,0 +1,54 @@
+
+.fancy-header {
+    color: salmon;
+    text-decoration: underline overline;
+}
+
+.languages {
+	color: powderblue;
+}
+
+body {
+	background-image: url(http://codeup.dev/img/dark_embroidery.png);
+}
+
+.part {
+	background-color: darkgoldenrod;
+	max-width: 500px;
+}
+
+h2 {
+	background-color: purple;
+	text-decoration: underline;
+}
+
+.background {
+	background-image: url(www.subtlepatterns.com/concrete-seamless)
+
+
+
+.web {
+	color: orange;
+	background-color: black;
+	max-width: 400px;
+}
+
+.list ul {
+	list-style-image: url(http://static1.1.sqspcdn.com/static/f/1249295/16522973/1328879215280/red_arrow_bullet_icon.gif?token=aK8RVo90HVpM6utb8RYhkirH4BI%3D);
+}
+
+a:visited {
+	color: green;
+}
+
+a:link {
+	color: pink;
+}
+
+a:hover {
+	color: darkgoldenrod;
+}
+
+a:active {
+	color: yellow;
+}

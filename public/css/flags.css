@@ -1,0 +1,38 @@
+#triangle-bottomright {
+	width: 100px;
+	height: 200px;
+	border-bottom: 626px solid black;
+	border-left: 1200px solid transparent;
+	float: right;
+}
+
+#triangle-topleft {
+	width: 0;
+	height: 0;
+	border-top: 626px solid yellow;
+	border-right: 1200px solid transparent;
+
+}
+
+#green {
+	background-color: green;
+	height: 626px;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+#white {
+	background-color: white;
+	height: 626px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+#red {
+	background-color: red;
+	height: 626px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+}

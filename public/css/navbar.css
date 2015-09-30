@@ -1,0 +1,43 @@
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+}
+
+li {
+	float: left;
+}
+
+nav {
+	position: relative;
+	margin-left: 330px;
+}
+
+a {
+	display: block;
+	width: 90px;
+	background-color: yellow;
+	border: 5px solid black;
+	text-align: center;
+}
+
+a:link  {
+	text-decoration: none;
+}
+
+a:visited {
+	color: blue;
+}
+
+a:active {
+	color: chartreuse;
+	background-color: black;
+}
+
+a:hover {
+	background-color: green;
+	color: orange;
+	border: 10px solid purple;
+
+}
