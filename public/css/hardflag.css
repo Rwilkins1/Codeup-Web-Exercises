@@ -2,7 +2,7 @@
 	width: 0;
 	height: 0;
 	border-top: 626px solid blue;
-	border-right: 500px solid transparent;
+	border-right: 400px solid transparent;
 	z-index: 1;
 	position: relative;
 }
@@ -16,7 +16,19 @@
 	margin-bottom: 200px;
 	margin-top: -626px;
 	z-index: 0;
+	position: absolute;
 
+}
+
+#red {
+	width: 0;
+	height: 0;
+	border-top: 626px solid red;
+	border-right: 1700px solid transparent;
+	margin-left: 0px;
+	margin-bottom: 300px;
+	margin-top:-626px;
+	z-index: 0px;
 }
 
 
@@ -31,8 +43,9 @@
 	width: 100;
 	height: 200;
 	border-bottom: 200px solid green;
-	border-left: 1200px solid transparent;
-	margin-top: -560px;
+	border-left: 1300px solid transparent;
+	margin-top: -600px;
+	margin-right: -100px;
 	float: right;
 }
 					
