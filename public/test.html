@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+</head>
+<body>
+	<script>
+	var whatami = false
+
+	switch (typeof whatami) {
+		case "boolean":
+			console.log("You are a boolean.");
+			break;
+		case "number":
+			console.log("You are a number.");
+			break;
+		case "string":
+			console.log("You are a string.");
+			break;
+		case "function":
+			console.log("You are an object.");
+			break;
+		case "undefined":
+			console.log("You are undefined.");
+			break;
+		default:
+			console.log("I have no clue.");
+	}
+	</script>
+
+</body>
+</html>
+
+
+
