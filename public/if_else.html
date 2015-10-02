@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>If/Else</title>
+</head>
+<body>
+
+<script>
+
+var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+var color = colors[Math.floor(Math.random()*colors.length)];
+var favorite = 'blue';
+
+if (color == 'red') {
+	message = ("Red: The Blood of Angry Men"); 
+} else if (color == 'orange') {
+	message = ("Orange you glad I didn\'t say banana?");
+} else if (color == 'yellow') {
+	message = ("Yellow, World");
+} else if (color == 'green') {
+	message = ("Don\'t wanna be an American Idiot (bananaNAnanaNUnuNANUH)");
+} else if (color == 'blue') {
+	message = ("Blue\'s cluuuues blue\'s cluuues");
+} else {
+	message = ("I do not know anything by that color")
+}
+
+console.log(message);
+
+message = (color == 'blue') ? 'This be my fave' : 'This be NOT my fave';
+console.log(message);
+
+</script>
+
+</body>
+</html>
