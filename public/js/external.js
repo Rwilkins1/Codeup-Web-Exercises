@@ -1,5 +1,5 @@
 "Use Strict"
 
-var hello="Hello frome external JavaScript"
+var hello="Hello from external JavaScript"
 
 console.log(hello)
