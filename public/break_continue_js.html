@@ -7,19 +7,20 @@
 	<h1>Break/Continue Exercise</h1>
 	<script>
 	"Use Strict"
-	console.log("Random odd number to skip is: 43");
+		console.log("Random odd number to skip is: 43");
 
-	for (var i = 1; i < 50; i++) {
+		for (var i = 1; i < 50; i++) {
 
-		if (i == 43) {
-			console.log("Yikes! Skipping number: " + i);
+			if (i == 43) {
+				console.log("Yikes! Skipping number: " + i);
+				continue;
 
-		} else if (i % 2 == 0) {
-			continue;
+			} else if (i % 2 == 0) {
+				continue;
+			}
+
+				console.log("This is an odd number: " + i);
 		}
-
-			console.log("This is an odd number: " + i);
-	}
 
 	</script>
 </body>
