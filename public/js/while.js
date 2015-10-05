@@ -1,6 +1,8 @@
-var i = 2;
+"Use Strict" 
 
-while (i < 131072) {
+var i = 1;
+
+while (i < 65536) {
+	i *= 2;
     console.log(i);
-    i = i * 2;
 }
