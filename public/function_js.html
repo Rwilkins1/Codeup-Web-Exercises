@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Function Exercise</title>
+</head>
+<body>
+	<h1>Function Exercise</h1>
+<script>
+"Use Strict"
+	var myNameIs = 'Reagan';
+
+	function sayHello(fname) {
+		return console.log('Hello, ' + myNameIs)
+	}
+
+	sayHello(myNameIs);
+
+	//
+
+	var random = Math.floor((Math.random()*100)+1);
+
+	function isOdd(num) {
+		return (random % 2 !== 0) ? console.log(random + " is odd") : console.log(random + " is even");
+	}
+
+	isOdd(random);
+</script>
+</body>
+</html>
