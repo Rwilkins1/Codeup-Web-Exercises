@@ -7,13 +7,15 @@
 	<h1>Areas Exercise</h1>
 <script>
 
+//rectangle//
+
 function rectangle(length, width) {
 	return "Area of Rectangle: " + (length * width);
 }
 
 console.log(rectangle(15, 8));
 
-//
+//triangle//
 
 function triangle(base, height) {
 	return "Area of Triangle: " + ((base * height)/2);
@@ -21,7 +23,7 @@ function triangle(base, height) {
 
 console.log(triangle(9, 8));
 
-//
+//circle area//
 
 function circlearea(pi, radius) {
 	return "Area of Circle: " + (pi * (radius * radius));
@@ -29,7 +31,7 @@ function circlearea(pi, radius) {
 
 console.log(circlearea(3.14, 6));
 
-//
+//circle perimeter//
 
 function circleper(pi, radius) {
 	return "Perimeter of Circle: " + (2 * pi * radius);
@@ -37,7 +39,7 @@ function circleper(pi, radius) {
 
 console.log(circleper(3.14, 6));
 
-//
+//trapezoid//
 
 function trapezoid(base1, base2, height) {
 	return "Area of Trapezoid: " + (((base1 + base2)/2) * height);
@@ -45,7 +47,7 @@ function trapezoid(base1, base2, height) {
 
 console.log(trapezoid(4, 6, 5));
 
-//
+//shaded area//
 
 function shade(length, width, base, height) {
 	return "Area of the Shaded Area: " + ((length * width) - ((base * height)/2));
@@ -53,10 +55,18 @@ function shade(length, width, base, height) {
 
 console.log(shade(15, 8, 9, 8));
 
-//
+//rectangular prism//
+
+function recprism(length, width, height) {
+	return "Area of Rectangular Prism: " + (2 * ((width * length) + (height * length) + (height * width)));
+}
+
+console.log(recprism(15, 8, 9));
+
+//The Star of David//
 
 function david(base, height, side) {
-	return "Area of the Star of David: " + ((((base * height)/2)*6) + (2.16337436 * (side * side)));
+	return "Area of the Star of David: " + ((((.433012701892219 * (base * height)/2))*6) + (2.59807621 * (side * side)));
 }
 
 console.log(david(4, 4, 4));
