@@ -10,7 +10,7 @@
 	var myNameIs = 'Reagan';
 
 	function sayHello(fname) {
-		return console.log('Hello, ' + myNameIs)
+		return console.log('Hello, ' + fname)
 	}
 
 	sayHello(myNameIs);
@@ -20,7 +20,7 @@
 	var random = Math.floor((Math.random()*100)+1);
 
 	function isOdd(num) {
-		return (random % 2 !== 0) ? console.log(random + " is odd") : console.log(random + " is even");
+		return (num % 2 !== 0) ? console.log(num + " is odd") : console.log(num + " is even");
 	}
 
 	isOdd(random);
