@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scope Exercise</title>
+</head>
+<body>
+	<h1>Scope Exercise</h1>
+<script>
+"Use Strict"
+(function () {}
+	var myNameIs = 'Reagan';
+
+	function sayHello(fname) {
+		return console.log('Hello, ' + fname)
+	}
+
+	sayHello(myNameIs);
+
+	//
+
+	var random = Math.floor((Math.random()*100)+1);
+
+	function isOdd(num) {
+		return (num % 2 !== 0) ? console.log(num + " is odd") : console.log(num + " is even");
+	}
+
+	isOdd(random);
+
+	//
+
+
+	function rand(min, max) {
+		return Math.floor((Math.random()*(max - min))+ min + 1);
+	}
+
+	console.log(rand(5, 20));
+})();
+</script>
+</body>
+</html>
