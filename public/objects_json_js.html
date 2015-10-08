@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Exercise</title>
+</head>
+<body>
+	<h1>JSON Exercise</h1>
+<script>
+"use strict"
+var books = [
+	{
+		"title" : "Atlas Shrugged",
+		"author" : {
+			"firstname" : "Ayn",
+			"lastname" : "Rand"
+		},
+	}, {
+		"title" : "In Cold Blood",
+		"author" : {
+			"firstname" : "Truman",
+			"lastname" : "Capote"
+		},
+	}, {
+		"title" : "The Road",
+		"author" : {
+			"firstname" : "Cormac",
+			"lastname" : "McCarthy"
+		},
+	}, {
+		"title" : "A Visit from the Goon Squad",
+		"author" : {
+			"firstname" : "Jennifer",
+			"lastname" : "Egan"
+		},
+	}, {
+		"title" : "Hannah Coulter",
+		"author" : {
+			"firstname" : "Wendell",
+			"lastname" : "Berry"
+		},
+	}
+];
+
+books.forEach(function(book, index) {
+	console.log("Book # " + (index + 1));
+	console.log("Title: " + book.title);
+	console.log("Author: " + book.author.firstname + ' ' + book.author.lastname);
+	console.log('--------');
+})
+
+</script>
+</body>
+</html>
