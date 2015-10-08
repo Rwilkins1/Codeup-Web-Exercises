@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Highlow</title>
+</head>
+<body>
+	<h1>Highlow game</h1>
+<script>
+
+	function getRandomNumber() {
+		var rand = Math.floor((Math.random()* 50)+1);
+			return rand;
+	}
+
+	function playAgain() {
+		var answer = confirm('Do you want to play again?');
+		return answer;
+	}
+
+	function getGuess() {
+		var guess = prompt("Take a guess between 1 and 50");
+		return guess;
+	}
+
+	function isValidGuess(guess) {
+		var parsedGuess = parseInt(guess);
+		if(isNaN(parsedGuess)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	function getValidGuess() {
+		do {
+			var guess = getGuess();
+		} while(isValidGuess(guess)==false);
+
+		return guess;
+	}
+	function playgame() {
+		
+		var huh = getRandomNumber();
+		var i = 0;
+		do {
+
+			var guess = getValidGuess();
+
+			if(guess == huh) {
+				alert('you did it!');
+				var replay = playAgain();
+					if(replay) {
+						playgame();
+					} else {
+						alert('That\'s ok. It\'s not like I worked hard on this or anything.');
+						break;
+					}
+			} else if(guess > huh) {
+				alert('Too High!');
+			} else if(guess < huh) {
+				alert('Too Low!');
+			}
+
+			i++;
+
+		} while(guess != huh && i < 5);
+
+		do {
+			var replay = playAgain();
+				if (replay) {
+					playgame()
+				} else {
+					alert("Quitter.");
+					break;
+				} 
+		} while(i >= 5);
+	}
+
+	playgame();
+
+	
+
+
+
+
+
+</script>
+</body>
+</html>

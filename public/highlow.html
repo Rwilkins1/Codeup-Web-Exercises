@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>High Low/Game</title>
+</head>
+<body>
+	<h1>High/Low Game</h1>
+<script>
+console.log("Just TRY to cheat! I DARE you!");
+
+(function() {
+	var rand = Math.floor((Math.random()*100)+1);
+	var answer = prompt("I'm thinking of a number between 1 and 100. What is it?");
+	var guesses = 10;
+
+	while (answer < rand && guesses >= 0) {
+		if (guesses == 1) {
+			answer = prompt("BAAA!!! Too Low! \n One more dawn, one more day, one guess moooooooooore!");
+			guesses--;
+		} else if (guesses > 1){
+			answer = prompt("BAAA!!! Too Low! \n You have " + guesses + " guesses left!")
+			guesses--;
+		} else {
+			alert("HA! You lose!");
+			break;
+		}
+	}
+
+	while (answer > rand && guesses >= 0) {
+		if (guesses == 1) {
+			answer = prompt("BAAA!!! Too High! \n One more dawn, one more day, one guess moooooooooore!");
+			guesses--;
+		} else if (guesses > 1) {
+			answer = prompt("BAAA!!! Too High! \n You have " + guesses + " guesses left!")
+			guesses--;
+		} else {
+			alert("HA! You lose!");
+			break;
+		}
+	}
+
+	while (answer == rand && guesses >= 0) {
+		if (guesses >= 0) {
+			alert("Oh, so you cheated? Whatever. You win.");
+			break;
+		} else {
+			alert("HA! You lose!");
+			break;
+		}
+	}
+})();
+
+
+
+</script>
+
+</body>
+</html>
