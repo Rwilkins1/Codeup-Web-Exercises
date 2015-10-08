@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Manipulating Arrays Exercise</title>
+</head>
+<body>
+	<h1>Manipulating Arrays Exercise</h1>
+<script>
+
+var planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'];
+
+function logPlanets() {
+    console.log('Here is the list of planets:');
+    console.log(planets);
+}
+
+console.log('Adding "The Sun" to the beginning of the planets array.');
+
+logPlanets(planets.unshift('The Sun'));
+
+console.log('Adding "Pluto" to the end of the planets array.');
+
+logPlanets(planets.push('Pluto'));
+
+console.log('Removing "The Sun" from the beginning of the planets array.');
+
+logPlanets(planets.shift());
+
+console.log('Removing "Pluto" from the end of the planets array.');
+
+logPlanets(planets.pop());
+
+console.log('Finding and logging the index of "Earth" in the planets array.');
+
+
+console.log(planets.indexOf("Earth"));
+
+console.log('Using splice to remove the planet after Earth.');
+
+logPlanets(planets.splice(3, 1));
+
+console.log('Using splice to add back the planet after Earth.');
+
+logPlanets(planets.splice(3, 0, "Mars"));
+
+console.log('Reversing the order of the planets array.');
+
+logPlanets(planets.reverse());
+
+console.log('Sorting the planets array.');
+
+logPlanets(planets.sort());
+</script>
+</body>
+</html>
