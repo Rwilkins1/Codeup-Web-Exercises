@@ -4,20 +4,21 @@
 	<title>Test</title>
 </head>
 <body>
-	<script>
-	var count = 0;
-	var max = 10;
-	var interval = 1000;
+<button id="btn1">Click Me!</button>
+    
+    <script>
 
-	var intervalID = setInterval(function () {
-		if (count >= max) {
-			clearInterval(intervalID);
-			console.log('All done!');
-		} else {
-			count++;
-			console.log("Repeating this line " + count);
-		}
-	}, interval);
+        // create a handler function
+        var listener = function (event) {
+            alert('You clicked the button!');
+        }
+
+        // register the listener to handle clicks on btn1
+        document.getElementById('btn1').addEventListener('click', listener, false);
+
+    </script>
+</body>
+</html>
 	</script>
 
 </body>
