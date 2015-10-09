@@ -5,27 +5,19 @@
 </head>
 <body>
 	<script>
-	var whatami = false
+	var count = 0;
+	var max = 10;
+	var interval = 1000;
 
-	switch (typeof whatami) {
-		case "boolean":
-			console.log("You are a boolean.");
-			break;
-		case "number":
-			console.log("You are a number.");
-			break;
-		case "string":
-			console.log("You are a string.");
-			break;
-		case "function":
-			console.log("You are an object.");
-			break;
-		case "undefined":
-			console.log("You are undefined.");
-			break;
-		default:
-			console.log("I have no clue.");
-	}
+	var intervalID = setInterval(function () {
+		if (count >= max) {
+			clearInterval(intervalID);
+			console.log('All done!');
+		} else {
+			count++;
+			console.log("Repeating this line " + count);
+		}
+	}, interval);
 	</script>
 
 </body>

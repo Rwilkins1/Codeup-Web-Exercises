@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Math Objects Exercise</title>
+</head>
+<body>
+	<h1>Math Objects Exercise</h1>
+<script>
+"use strict"
+// create a circle object
+var circle = {
+    radius: 3,
+    getArea: function () {
+    	var area = Math.PI * Math.pow(this.radius, 2);
+        return area;
+    },
+    getcircumference: function() {
+    	return 2*Math.PI*this.radius;
+    },
+    logInfo: function (round) {
+        // todo: complete this method. if round is true, round the result to the nearest integer.
+        var result = this.getArea();
+        if (round) {
+        	console.log('Area of a circle with radius: ' + this.radius + ' is ' + Math.round(result));
+        } else {
+        console.log('Area of a circle with radius: ' + this.radius + ' is: ' + result);
+    	}
+    }
+};
+
+// log info about the circle
+circle.logInfo(false);
+circle.logInfo(true);
+console.log('Circumference of a circle with a radius of ' + circle.radius + ' is ' + circle.getcircumference());
+// todo:
+// Change the radius of the circle to 5.
+circle.radius = 5;
+// log info about the circle
+circle.logInfo(false);
+circle.logInfo(true);
+console.log('Circumference of a circle with a radius of ' + circle.radius + ' is ' + circle.getcircumference());
+</script>
+</body>
+</html>
