@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1 id="main-header">Hello World!</h1>
+    <button id = "butn1">Change what this says!!!</button>
     <ul>
         <li data-dbid="1">Item 1</li>
         <li data-dbid="2">Item 2</li>
@@ -13,7 +14,9 @@
         <li data-dbid="4">Item 4</li>
         <li data-dbid="5">Item 5</li>
     </ul>
+    <button id = "butn2">Change the colors of these items!</button>
     <h2 id="sub-header">Hello Again.</h2>
+    <button id = "butn3">Make this blue!!!</button>
     <p class="sub-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -23,8 +26,7 @@
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
         culpa qui officia deserunt mollit anim id est laborum.
     </p>
-
-    <button id = "col">Change the color of the page!</button>
+    <button id = "butn4">Change what this says!</button>
 
     <script>
         "use strict";
@@ -32,19 +34,27 @@
             // TODO: Uncomment next line and get the main header element by id
             var mainHeader = document.getElementById("main-header");
 
-            mainHeader.innerHTML = "JavaScript is Cool!";
+            var head = function (event) {
+                mainHeader.innerHTML = "JavaScript is Cool!";
+            }
+
+            document.getElementById('butn1').addEventListener('click', head, false);
 
             // TODO: Set inner html of mainHeader to "JavaScript is Cool"
 
             // TODO: Uncomment the next line and get the sub header element by id
             var subHeader = document.getElementById("sub-header");
 
-            subHeader.style.color = '#0000FF';
+            var sub = function (event) {
+                subHeader.style.color = '#0000FF';
+            }
 
+            document.getElementById('butn3').addEventListener('click', sub, false);
             // TODO: Set the text color of subHeader to blue
 
             // TODO: Uncomment the next line and get all list items
             var listItems = document.getElementsByTagName("li");
+        var list = function (event) {
             
             for (var i = 0; i < listItems.length; i++) {
 
@@ -54,6 +64,9 @@
                     listItems[i].style.color = "blue";
                 }
             } 
+        }
+
+        document.getElementById('butn2').addEventListener('click', list, false);
 
 
             // TODO: Set text color on every other list item to grey
@@ -61,7 +74,11 @@
 
             // TODO: Uncomment the next line and get all elements with class name sub-paragraph
             var subParagraphs = document.getElementsByClassName("sub-paragraph");
-            subParagraphs[0].innerHTML = "Mission Accomplished!";
+            var subp = function (event) {
+                subParagraphs[0].innerHTML = "Mission Accomplished!";
+            }
+
+            document.getElementById('butn4').addEventListener('click', subp, false);
 
 
             
