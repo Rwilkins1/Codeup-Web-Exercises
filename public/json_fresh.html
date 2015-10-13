@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fresh JSON</title>
+</head>
+<body>
+	<h1>Fresh workspace for the JSON objects exercise</h1>
+<script>
+
+var books = [book1, book2, book3, book4, book5];
+var book1 = [{
+	"title" : "Atlas Shrugged",
+	"author" : {
+		"firstname" : "Ayn",
+		"lastname" : "Rand",
+	}
+}]
+var book2 = [{
+	"title" : "In Cold Blood",
+	"author" : {
+		"firstname" : "Truman",
+		"lastname" : "Capote",
+	}
+}]
+var book3 = [{
+	"title" : "The Road",
+	"author" : {
+		"firstname" : "Cormac",
+		"lastname" : "McCarthy",
+	}
+}]
+var book4 = [{
+	"title" : "A Visit from the Goon Squad",
+	"author" : {
+		"firstname" : "Jennifer",
+		"lastname" : "Egan",
+	}
+}]
+var book5 = [{
+	"title" : "Hannah Coulter",
+	"author" : {
+		"firstname" : "Wendell",
+		"lastname" : "Berry",
+	}
+}]
+
+books.forEach(function(name, index) {
+	console.log("book number " + (index + 1))
+	console.log("Title: " + title)
+	console.log("Author: " + author.firstname + ', ' + author.lastname)
+})
+console.log(books);
+</script>
+</body>
+</html>
