@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Calculator</title>
+	<link rel="stylesheet" href="/css/calculator.css">
+</head>
+<body>
+	
+<div id = "calculator">
+	<div id = "spaces">
+		<div id = "instrument">
+			Wilkins Instruments BF-0150
+		</div>
+		<form id = "operation" action = "calculator.html">
+
+				<!-- First input/Result Input -->
+				<label for "left"></label>
+				<textarea id ="left" name = "left" type = "text" cols = 20 readonly></textarea>
+
+				<!-- Middle (Operator) Input -->
+				<label for "middle"></label>
+				<textarea id = "middle" name = "middle" type = "text" cols = 5 readonly></textarea>
+
+				<!-- Last Input -->
+				<label for "right"></label>
+				<textarea id = "right" name = "right" type = "text" readonly></textarea>
+				<!-- <h3>=</h3> -->
+				<!-- <label for "answer"></label> -->
+				<!-- <textarea id = "answer" name = "answer" type = "text" readonly></textarea> -->
+		</form>
+	</div>
+	<div id = "buttons">
+
+		<!-- First Row of Buttons-->
+			<a class = "num" data-val = "1">1</a>
+			<a class = "num" data-val = "2">2</a>
+			<a class = "num" data-val = "3">3</a>
+			<a class = "op" data-val = "+">+</a>
+			<br><br><br>
+		<!-- Second Row of Buttons-->
+			<a class = "num" data-val = "4">4</a>
+			<a class = "num" data-val = "5">5</a>
+			<a class = "num" data-val = "6">6</a>
+			<a class = "op" data-val = "-">-</a>
+			<br><br><br>
+		<!-- Third Row of Buttons-->
+			<a class = "num" data-val = "7">7</a>
+			<a class = "num" data-val = "8">8</a>
+			<a class = "num" data-val = "9">9</a>
+			<a class = "op" data-val = "*">*</a>
+			<br><br><br>
+		 <!-- Fourth Row of Buttons-->
+			<a class = "num" data-val = ".">.</a>
+			<a class = "num" data-val = "0">0</a>
+			<a class = "num" data-val = "+/-">-</a>
+			<a class = "op" data-val = "/">/</a>
+			<br><br><br>
+			<!-- Fifth Row of Buttons-->
+			<a id = "C" data-clear = "C">C</a>
+			<a id = "eq" data-equals = "=">=</a>
+			<a class = "op" data-val = "squared">^2</a>
+			<a class = "op" data-val = "root">√</a>
+	</div>
+</div>
+
+<script>
+"use strict";
+(function() {
+
+	var button = document.getElementsByTagName("a");
+	var leftnum = document.forms.operation.left;
+	var middlenum = document.forms.operation.middle;
+	var rightnum = document.forms.operation.right;
+	// var answernum = document.forms.operation.answer;
+
+	// ALL numbers go in here!!!//
+	var number = function(event) {
+		var value = this.innerHTML;
+		
+	 	if (middlenum.innerHTML == "") {
+	 		leftnum.innerHTML += value;
+	 	} 
+	 	if (middlenum.innerHTML == "+") {
+	 		rightnum.innerHTML += value; 
+	 	} 
+	 	if (middlenum.innerHTML == "-") {
+	 		rightnum.innerHTML += value;
+	 	}
+	 	if (middlenum.innerHTML == "*") {
+	 		rightnum.innerHTML += value;
+	 	}
+	 	if (middlenum.innerHTML == "/") {
+	 		rightnum.innerHTML += value;
+	 	}	
+	}
+	//ALL operators go in here!!!//
+	var operator = function(event) {
+		var value = this.innerHTML;
+		middlenum.innerHTML += value;
+	}
+
+	// This is the clear button!!!//
+	var clear = function(event) {
+		location.reload(true);
+	}
+
+	// This does the calculation!!!//
+	var result = function(event) {
+		var left = leftnum.innerHTML;
+		var right = rightnum.innerHTML;
+
+		if (middlenum.innerHTML == "/") {
+			leftnum.innerHTML = (left/right);
+			middlenum.innerHTML = "";
+			rightnum.innerHTML = "";
+		} else if (middlenum.innerHTML == "*") {
+			leftnum.innerHTML = (left * right);
+			middlenum.innerHTML = "";
+			rightnum.innerHTML = "";
+		} else if (middlenum.innerHTML == "+") {
+			leftnum.innerHTML = (parseInt(left) + parseInt(right));
+			middlenum.innerHTML = "";
+			rightnum.innerHTML = "";
+		} else if (middlenum.innerHTML == "-") {
+			leftnum.innerHTML = (left - right);
+			middlenum.innerHTML = "";
+			rightnum.innerHTML = "";
+		} else if (middlenum.innerHTML == "^2") {
+			leftnum.innerHTML = (Math.pow(left, 2));
+			middlenum.innerHTML = "";
+			rightnum.innerHTML = "";
+		} else if (middlenum.innerHTML == "√") {
+			leftnum.innerHTML = (Math.sqrt(left));
+			middlenum.innerHTML = "";
+			rightnum.innerHTML = "";
+		}
+	}
+
+	// makes the number buttons work//
+	var buttons = document.getElementsByClassName("num");
+	
+	for (var i = 0; i < buttons.length; i++) {
+		buttons[i].addEventListener('click', number, false);
+	}
+
+	//makes the operator buttons work//
+	var operations = document.getElementsByClassName("op");
+
+	for (var i = 0; i < operations.length; i++) {
+		operations[i].addEventListener('click', operator, false);
+	}
+
+	// makes the clear button work//
+	document.getElementById("C").addEventListener('click', clear, false);
+	
+	//makes the equals button work//
+	document.getElementById("eq").addEventListener('click', result, false);
+})();
+</script>
+</body>
+</html>
