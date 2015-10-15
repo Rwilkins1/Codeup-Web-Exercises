@@ -5,20 +5,20 @@
 	<script src = "/js/jquery.js"></script>
 </head>
 <body>
-	<h1 id = "heading">Jquery Exercises</h1>
+	<h1 class = "codeup">Jquery Exercises</h1>
 	<p>
-		<ul id = "list">
-			<li id = "listitem1">Item 1</li>
-			<li id = "listitem2">Item 2</li>
+		<ul id = "codeup">
+			<li class = "hello">Item 1</li>
+			<li class = "hello">Item 2</li>
 		</ul>
 	</p>
-	<div id = "stuff">
+	<div class = "codeup">
 		Obtuse, Rubber Goose, Green Moose, Guava Juice, Giant Snake, Birthday Cake, Large Fries, Chocolate Shake. 
 	</div>
 <script>
+"use strict";
 	$(document).ready(function() {
-		var contents = $("#listitem2");
-		alert(contents.html());
+		$(".codeup").css("border", "1px solid red");
 	});
 </script>
 </body>
