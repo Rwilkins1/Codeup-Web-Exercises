@@ -5,11 +5,20 @@
 	<script src = "/js/jquery.js"></script>
 </head>
 <body>
-	<h1>Jquery Exercises</h1>
-
+	<h1 id = "heading">Jquery Exercises</h1>
+	<p>
+		<ul id = "list">
+			<li id = "listitem1">Item 1</li>
+			<li id = "listitem2">Item 2</li>
+		</ul>
+	</p>
+	<div id = "stuff">
+		Obtuse, Rubber Goose, Green Moose, Guava Juice, Giant Snake, Birthday Cake, Large Fries, Chocolate Shake. 
+	</div>
 <script>
 	$(document).ready(function() {
-		alert("The DOM has finished loading!!!!!");
+		var contents = $("#listitem2");
+		alert(contents.html());
 	});
 </script>
 </body>
