@@ -14,14 +14,15 @@
     </style>
 </head>
 <body>
-    <h1>Konami Code</h1>
     <textarea id = "code" type = "text"></textarea>
     <script>
         "use strict";
+        var audio = new Audio('success.wav')
       
         $(document).ready(function() {
         	var input = $("#code").html();
-	        $(document).keyup(function(event){
+        	
+	        $(document).keyup(function(event) {
 	            var enter = event.which;
 		        
 		        if (enter == 38) {
@@ -39,7 +40,8 @@
 		        } else if (enter == 13) {
 		        	input += enter;
 		         	if (input == 3838404037393739666513){
-		        		alert("You have added 30 lives!");
+		         		audio.play();
+		        		alert("You have added 30 lives");
 		        		location.reload(true);
 		        	} else {
 		        		location.reload(true);
@@ -47,6 +49,8 @@
 		        }
 	        });
 	    });
+
+	    
     </script>
 </body>
 </html>
