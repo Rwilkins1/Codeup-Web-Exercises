@@ -6,19 +6,23 @@
 </head>
 <body>
 	<h1 class = "codeup">Jquery Exercises</h1>
-	<p>
 		<ul id = "codeup">
 			<li class = "hello">Item 1</li>
 			<li class = "hello">Item 2</li>
 		</ul>
-	</p>
 	<div class = "codeup">
+	<p>
 		Obtuse, Rubber Goose, Green Moose, Guava Juice, Giant Snake, Birthday Cake, Large Fries, Chocolate Shake. 
+	</p>
 	</div>
 <script>
 "use strict";
 	$(document).ready(function() {
-		$(".codeup").css("border", "1px solid red");
+		$("li").css("font-size", "20px");
+		$("li").css("background-color", "yellow");
+		$("p").css("background-color", "yellow");
+		$("h1").css("background-color", "yellow");
+		alert($("h1").html());
 	});
 </script>
 </body>
