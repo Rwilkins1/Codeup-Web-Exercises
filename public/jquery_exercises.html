@@ -20,16 +20,26 @@
 	$(document).ready(function() {
 
 		$("h1").click(function() {
-			$("h1").css("background-color", "#CC9900");
+			$("h1").css("background-color", "#CC9900").css("margin-right", "950px");
+		});
+
+		// Undoes the "click" changes for the h1
+		$("h1").dblclick(function() {
+			$("h1").css("background-color", "white");
 		});
 
 		$("p").dblclick(function() {
 			$("p").css("font-size", "18px");
 		});
 
+		// Undoes the "doubleclick" changes for the p
+		$("p").click(function() {
+			$("p").css("font-size", "16px");
+		});
+
 		$("li").hover(
 			function() {
-				$(this).css("background-color", "red");
+				$(this).css("background-color", "red").css("margin-right", "1120px");
 			},
 			function() {
 				$(this).css("background-color", "white");
