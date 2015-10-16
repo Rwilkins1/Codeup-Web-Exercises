@@ -4,9 +4,6 @@
     <title>Konami Code</title>
     <script src="/js/jquery.js"></script>
     <style>
-    	#code {
-    		visibility: hidden;
-    	}
     	body {
     		background-image: url(http://codeup.dev/img/contra.png);
     		background-size: 1200px 800px;
@@ -14,39 +11,51 @@
     </style>
 </head>
 <body>
-    <textarea id = "code" type = "text"></textarea>
     <script>
         "use strict";
         var audio = new Audio('success.wav')
+        var correct = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+        var input = [];
       
         $(document).ready(function() {
-        	var input = $("#code").html();
         	
 	        $(document).keyup(function(event) {
 	            var enter = event.which;
+	            input.push(enter);
+
+	            if (input[input.length-1] != correct[input.length-1]) {
+	            	input = [];
+	            }
 		        
-		        if (enter == 38) {
-		        	input += enter;
-		        } else if (enter == 40) {
-		        	input += enter;
-		        } else if (enter == 37) {
-		        	input += enter;
-		        } else if (enter == 39) {
-		        	input += enter;
-		        } else if (enter == 66) {
-		        	input += enter;
-		        } else if (enter == 65) {
-		        	input += enter;
-		        } else if (enter == 13) {
-		        	input += enter;
-		         	if (input == 3838404037393739666513){
-		         		audio.play();
-		        		alert("You have added 30 lives");
-		        		location.reload(true);
-		        	} else {
-		        		location.reload(true);
-		        	}
+		        if (input.length == correct.length) {
+		        	audio.play();
+		        	alert("You have added 30 lives");
+		        	location.reload(true);
 		        }
+		        // if (enter == 38) {
+		        // 	input.push(enter);
+		        // } else if (enter == 40) {
+		        // 	input.push(enter);
+		        // } else if (enter == 37) {
+		        // 	input.push(enter);
+		        // } else if (enter == 39) {
+		        // 	input.push(enter);
+		        // } else if (enter == 66) {
+		        // 	input.push(enter);
+		        // } else if (enter == 65) {
+		        // 	input.push(enter);
+		        // } else if (enter == 13) {
+		        // 	input.push(enter);
+		        //  	if (input.join("|") == correct.join("|")){
+		        //  		audio.play();
+		        // 		alert("You have added 30 lives");
+		        // 		location.reload(true);
+		        // 	} else {
+		        // 		location.reload(true);
+		        // 	}
+		        // } else {
+		        // 	location.reload(true);
+		        // }
 	        });
 	    });
 
