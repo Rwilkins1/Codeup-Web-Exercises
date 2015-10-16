@@ -4,13 +4,13 @@
 	<title>FAQ</title>
 	<script src = "/js/jquery.js"></script>
 	<style>
-		.invisible {
+	/*	.invisible {
 			visibility: hidden;
 		}
 		.visible {
 			color: black;
 			background-color: red;
-		}
+		}*/
 	</style>
 </head>
 <body>
@@ -85,10 +85,10 @@
 	<script>
 	"use strict";
 		$(document).ready(function () {
-			
+
 			$("dt").click(function() {
 				event.preventDefault();
-				$("dd").toggleClass('invisible');
+				$("dd").toggle();
 			});
 
 			$("ul").each(function() {
@@ -97,12 +97,12 @@
 
 			$("li").click(function() {
 				event.preventDefault();
-				$(this).parent().addClass("invisible");
+				$(this).parent().hide();
 			});
 
 			$("h3").click(function() {
 				event.preventDefault();
-				$("ul").removeClass("invisible");
+				$("ul").show();
 			});
 			
 		});
