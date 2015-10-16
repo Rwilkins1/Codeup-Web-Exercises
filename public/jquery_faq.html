@@ -59,28 +59,28 @@
 		</dl>
 
 	<h3>Yellowstone National Park</h3>
-	<ul>
-		<li>Yellowstone is home to 40 major waterfalls</li>
-		<li>Yellowstone was America's first national park</li>
-		<li>It was declared a national park before its state was officially recognized.</li>
-		<li>It is home to approximately 300 active geysers</li>
-	</ul>
+		<ul>
+			<li>Yellowstone is home to 40 major waterfalls</li>
+			<li>Yellowstone was America's first national park</li>
+			<li>It was declared a national park before its state was officially recognized.</li>
+			<li>It is home to approximately 300 active geysers</li>
+		</ul>
 
 	<h3>Carlsbad Caverns National Park</h3>
-	<ul>
-		<li>It is located in New Mexico</li>
-		<li>The biggest cavern is 3,800 feet long by 600 feet wide</li>
-		<li>The cavern is home to a pool that looks shallow, but is actually hundreds of feet deep.</li>
-		<li>It was discovered in the late 1800's</li>
-	</ul>
+		<ul>
+			<li>It is located in New Mexico</li>
+			<li>The biggest cavern is 3,800 feet long by 600 feet wide</li>
+			<li>The cavern is home to a pool that looks shallow, but is actually hundreds of feet deep.</li>
+			<li>It was discovered in the late 1800's</li>
+		</ul>
 
 	<h3>Glacier National Park</h3>
-	<ul>
-		<li>Glacier is home to 762 lakes.</li>
-		<li>631 of these lakes are unnamed.</li>
-		<li>It is home to 277 documented species of birds</li>
-		<li>True to its name, the park contains 25 glaciers.</li>
-	</ul>
+		<ul>
+			<li>Glacier is home to 762 lakes.</li>
+			<li>631 of these lakes are unnamed.</li>
+			<li>It is home to 277 documented species of birds</li>
+			<li>True to its name, the park contains 25 glaciers.</li>
+		</ul>
 
 	<script>
 	"use strict";
@@ -88,21 +88,21 @@
 
 			$("dt").click(function() {
 				event.preventDefault();
-				$("dd").toggle();
+				$("dd").fadeToggle();
 			});
 
 			$("ul").each(function() {
 				$(this).children().first().css("font-weight", "bold");
 			});
 
-			$("li").click(function() {
-				event.preventDefault();
-				$(this).parent().hide();
-			});
+			// $("li").click(function() {
+			// 	event.preventDefault();
+			// 	$(this).parent().hide();
+			// });
 
 			$("h3").click(function() {
 				event.preventDefault();
-				$("ul").show();
+				$("ul").children().fadeToggle();
 			});
 			
 		});
