@@ -29,6 +29,8 @@
         <button id="btn-show">Show It</button>
         <button id="btn-shrink">Shrink out of Existence</button>
         <button id="btn-all">Animate All</button>
+        <button id="circle">Turn It into a Circle!</button>
+        <button id="kaleidoscope">Morph</button>
         <button id="btn-reset">Reset</button>
     </p>
 
@@ -49,7 +51,7 @@
         // Scale It
         $("#btn-scale").click(function(){
             $("#animate-box").animate({
-                width: "50%"
+                width: "+=50%"
             }, 1000);
         });
 
@@ -90,6 +92,31 @@
                 width: -50,
                 height: -50
             }, 1000).animate({
+                width: 250,
+                height: 250
+            }, 500);
+        });
+
+        // Turn it into a circle!
+        $("#circle").click(function(){
+            $("#animate-box").animate({
+                borderRadius: "180px"
+            }, 1000);
+        });
+
+        // Morph
+        $("#kaleidoscope").click(function(){
+            $("#animate-box").animate({
+                borderRadius:"180px"
+            }, 500).animate({
+                width: 162,
+                heigh: 185
+            }, 300).animate({
+                borderRadius:"100px"
+            }, 300).animate({
+                borderRadius:"20px"
+            }, 300).animate({
+                borderRadius:0,
                 width: 250,
                 height: 250
             }, 500);
