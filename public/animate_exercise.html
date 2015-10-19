@@ -13,7 +13,7 @@
         }
 
         #animate-box {
-            background-color: blue;
+            background-color: #444;
             height: 250px;
             margin: 15px;
             position: relative;
@@ -38,6 +38,7 @@
 
     <script src="./animate_exercise_files/jquery.min.js"></script>
     <script>
+(function() {
     $(document).ready(function() {
         "use strict";
 
@@ -51,7 +52,7 @@
         // Scale It
         $("#btn-scale").click(function(){
             $("#animate-box").animate({
-                width: "+=50%"
+                width: "+=125px"
             }, 1000);
         });
 
@@ -81,7 +82,7 @@
         $("#btn-all").click(function(){
             $("#animate-box").animate({
                 left: "100px",
-                width: "50%"
+                width: "+=125px"
             }, 1000).animate({
                 opacity: 0
             }, 1000).animate({
@@ -109,16 +110,14 @@
             $("#animate-box").animate({
                 borderRadius:"180px"
             }, 500).animate({
-                width: 162,
-                heigh: 185
+                width: 130
             }, 300).animate({
                 borderRadius:"100px"
             }, 300).animate({
                 borderRadius:"20px"
             }, 300).animate({
                 borderRadius:0,
-                width: 250,
-                height: 250
+                width: 250
             }, 500);
         });
 
@@ -129,6 +128,7 @@
 
        
     });
+});
     </script>
 
 
