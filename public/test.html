@@ -2,20 +2,29 @@
 <html>
 <head>
 	<title>Test</title>
+    <script src = "/js/jquery.js"></script>
+    <style>
+        #box {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
-<button id="btn1">Click Me!</button>
+
+    <div id = "box"></div>
+    <button id = "animate">To the right, to the right</button>
     
     <script>
 
-        // create a handler function
-        var listener = function (event) {
-            alert('You clicked the button!');
-        }
-
-        // register the listener to handle clicks on btn1
-        document.getElementById('btn1').addEventListener('click', listener, false);
-
+    $("#animate").click(function() {
+        $("#box").animate({ 
+            left: "+=500px"
+        }, 1000);
+    });
+        
     </script>
 </body>
 </html>
