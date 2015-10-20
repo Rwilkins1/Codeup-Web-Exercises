@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://app.codeup.com/content/examples/javascript/ajax_store.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" type="image/png" href="img/hamm.png">
+    <title>Two-L's Tools: Work like a Man, Feel like a Man, Shop like a Man</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <style>
+        body {
+            background-image: url(http://codeup.dev/img/purty_wood.png);
+            text-align: center;
+        }
+        table {
+            margin-left: 200px;
+            margin-top: 10px;
+            background-image: url(http://codeup.dev/img/toolback.png);
+            background-repeat: no-repeat;
+        }
+        tr {
+            border: 1px solid black;
+        }
+        th {
+            border: 1px solid black;
+            font-size: 50px;
+            text-shadow: 5px 5px 5px #444;
+        }
+        td {
+            border: 1px solid black;
+            font-size: 30px;
+            text-shadow: 5px 5px 5px #444;
+        }
+        h1 {
+            background-image: url(http://codeup.dev/img/toolback.png);
+        }
+        h2 {
+            background-image: url(http://codeup.dev/img/hamm1.png);
+            background-size: 300px 240px;
+            padding-bottom: 0px;
+            text-shadow: 5px 5px 5px #444;
+            margin-top: 0px;
+            margin-bottom: 50px;
+        }
+        button {
+            margin-bottom: 30px;
+            background-color: #444;
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Work like a Man, Feel like a Man, Shop like a Man.<br><br><br><br><br><br>Two-L's Tools</h2>
+
+<table id="products">
+    <button id="refresh">Refresh</button>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Categories</th>
+        </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+<h3>©2015 Wilkins Instruments ltd.</h3>
+
+<script src="./ajax_store_files/jquery.min.js"></script>
+
+<script>
+(function() {
+    var products = $.get("/Data/inventory.json");
+    var table = $("#insertProducts");
+    var i = 0;
+
+    $("#refresh").click(function() {
+       table.html(" ");
+       $.get("/Data/inventory.json").done(function(products) {
+            for(var i = 0; i < products.length; i++) {
+                table.append("<tr><td>" + products[i].title + "</td><td>" + products[i].quantity + "</td><td>" + products[i].price + "</td><td>" + products[i].categories + "</td></tr>");
+            }
+       });
+    });
+
+    function inventory() {
+        products.done(function(products) {
+            for(var i = 0; i < products.length; i++) {
+                table.append("<tr><td>" + products[i].title + "</td><td>" + products[i].quantity + "</td><td>" + products[i].price + "</td><td>" + products[i].categories + "</td></tr>");
+            }
+        });
+    }
+
+    inventory();
+            
+    // TODO: Create an ajax GET request for /data/inventory.json
+
+    // TODO: Take the data from inventory.json and append it to the products table
+    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+    //             its contents and fields
+    //       HINT: You will want to target #insertProducts for your new HTML elements
+})();
+</script>
+
+
+
+</body></html>
