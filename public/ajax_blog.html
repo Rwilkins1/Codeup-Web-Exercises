@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+	<!-- Tab -->
 	<link rel="icon" type="image/png" href="img/smooth.png">
 	<title>Reagan's World: The Blog</title>
 	<link rel="stylesheet" href="/css/bootstrap.css">
+	<script src="/js/jquery.js"></script>
+
 	<style>
+
+		/*The background*/
 		body {
 			background-image: url(http://codeup.dev/img/nature.png);
 		}
+
+		/*The top text*/
 		h1 {
 			color: white;
 			text-shadow: 5px 5px 5px #444;
 			font-weight: bold;
 		}
+
+		/*Additional top text*/
 		#top {
 			color: white;
 			text-shadow: 5px 5px 5px #444;
 		}
-		span {
-			border: 1px solid black;
-		}
-
 
 	</style>
+
 </head>
 <body>
-	<script src="/js/jquery.js"></script>
+
+	
+
+	<!-- Top text -->
 	<h1>Reagan's World</h1>
 	<h2 id = "top">Words of wisdom from a full stack student.</h2>
 	<div class = "jumbotron" id = "posts">Recent Updates:<br>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</div>
+
+<!-- JavaScript starts here -->
 <script>
+"use strict";
+(function() {
 	var blog = $.get("/Data/blog.json");
 	var substance = $("#posts");
 
+	// Loads the content
 	blog.done(function(blog) {
 		for(var i = 0; i < blog.length; i++) {
 			substance.append("<br><h2>" + blog[i].title + "</h2><br><h4>" + blog[i].posts + "</h4><br>" + "Categories: " + blog[i].categories+ "<br>" + blog[i].date + "<br>" + "--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		}
 	});
+})();
 </script>
 
 </body>
