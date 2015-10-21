@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather Map</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<img id = "pic" src = "" ></img>
+	<style>
+		body {
+			background-color: skyblue;
+		}
+		#city {
+			text-align: center;
+		}
+		.show0 {
+			background-color: #C0C0C0;
+			position: absolute;
+			margin-left: 400px;
+		}
+		.show1 {
+			background-color: #C0C0C0;
+			position: absolute;
+			margin-left: 550px;
+		}
+		.show2 {
+			background-color: #C0C0C0;
+			position: absolute;
+			margin-left: 700px;
+		}
+		 #map-canvas {
+            width: 770px;
+            height: 400px;
+            position: absolute;
+            margin-top: 250px;
+            margin-left: 250px;
+        }
+
+	</style>
+</head>
+<body>
+	<h1 id = "city">San Antonio</h1>
+	<div class = "show0"></div><div class = "show1"></div><div class = "show2"></div>
+
+	<div id="map-canvas"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0mcXvTkmVhgIgIvKOz28NVJf-TEC7spU"></script>
+
+	<script src="js/jquery.js"></script>
+	<script>
+	var display = [];
+	display[0] = $(".show0");
+	display[1] = $(".show1");
+	display[2] = $(".show2");
+
+	$.get("http://api.openweathermap.org/data/2.5/forecast", {
+    	APPID: "2255408d7aca211f7f864daeee1e71f9",
+    	q:     "San Antonio, TX",
+    	cnt: 3,
+    	units: "imperial"
+	}).done(function(data)  {
+		console.log(data);
+		console.log("Current Temp: " + data.list[0].main.temp);
+		for(var i = 0; i < data.list.length; i++) {
+			var icon = data.list[i].weather[0].icon
+			console.log(String(icon));
+			display[i].append("<h3>" + data.list[i].main.temp_max + "˚/" + data.list[i].main.temp_min + "˚</h3>" + "<br>" + "<img src='http://openweathermap.org/img/w/10d.png'</img>" + "<br>" + "Description: " + data.list[i].weather[0].description + "<br>" + "Humidity: " + data.list[i].main.humidity + "<br>" + "Wind: " + data.list[i].wind.speed + "<br>" + "Pressure: " + data.list[i].main.pressure);
+		}
+	});
+
+	var mapOptions = {
+            zoom: 3,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: {
+                lat:  32.1318,
+                lng: -110.5532 
+            }
+        };
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	</script>
+
+</body>
+</html>
