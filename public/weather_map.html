@@ -21,21 +21,18 @@
 		.show0 {
 			background-color: #C0C0C0;
 			position: absolute;
-			margin-left: 400px;
 			text-align: center;
 			box-shadow: 5px 5px 5px #444;
 		}
 		.show1 {
 			background-color: #C0C0C0;
 			position: absolute;
-			margin-left: 570px;
 			text-align: center;
 			box-shadow: 5px 5px 5px #444;
 		}
 		.show2 {
 			background-color: #C0C0C0;
 			position: absolute;
-			margin-left: 715px;
 			text-align: center;
 			box-shadow: 5px 5px 5px #444;
 		}
@@ -98,9 +95,8 @@
 	<!-- The inputs -->
 	<form id ="lalo" method="GET" action="weather_map.html">
 		<label for = "destination"></label>
-		<input id = "destination" name = "destination" type = "text" placeholder = "Enter a Destination">
+		<input id = "destination" name = "destination" type = "text" placeholder = "Enter a City Name">
 		<a id = "Submit">Submit</a>
-		<a id = "Clear">Clear</a>
 	</form> 
 
 	<!-- The Map -->
@@ -111,6 +107,8 @@
 	<script src="js/jquery.js"></script>
 	<script>
 
+(function() {
+	// Variables!
 	var place = document.getElementById("destination");
 	var display = [];
 	display[0] = $(".show0");
@@ -118,40 +116,49 @@
 	display[2] = $(".show2");
 	var input = [];
 
+	// Map Variables
 	var mapOptions = {
 		zoom: 8,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	function anim() {
+		$(".show0").animate({
+			left: "300px"
+		}), 1000;
 
+		$(".show1").animate({
+			left: "500px"
+		}, 1000);
+
+		$(".show2").animate({
+			left: "750px"
+		}, 1000);
+	};
+
+	// The Input
 	$("#destination").keydown(function(event) {
 		var enter = String.fromCharCode(event.which).toLowerCase();
-		if (enter == "13") {
-			enter == "";
-		}
 		input.push(enter);
-	})
-
-	$("#Clear").click(function() {
-		input = [];
-		$("#destination").val('');
-
 	});
 
+	// The Submit Button
 	$("#Submit").click(function() {
 		$("#city").html(input.join(""))
-		$.get("http://api.openweathermap.org/data/2.5/forecast", {
+		$.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
 	    	APPID: "2255408d7aca211f7f864daeee1e71f9",
 	    	q:     input.join(""),
 	    	cnt: 3,
 	    	units: "imperial"
 		}).done(function(data)  {
 			console.log(data)
+			// Re-runs the weather function
 			for(var i = 0; i < data.list.length; i++) {
 				var icon = data.list[i].weather[0].icon
-				display[i].html("<h3>" + data.list[i].main.temp_max + "˚/" + data.list[i].main.temp_min + "˚</h3>" + "<br>" + "<img src='http://openweathermap.org/img/w/10d.png'</img>" + "<br>" + "Description: " + data.list[i].weather[0].description + "<br>" + "Humidity: " + data.list[i].main.humidity + "<br>" + "Wind: " + data.list[i].wind.speed + "<br>" + "Pressure: " + data.list[i].main.pressure);
+				display[i].html("<h3>" + data.list[i].temp.max + "˚/" + data.list[i].temp.min + "˚</h3>" + "<br>" + "<img src='http://openweathermap.org/img/w/10d.png'</img>" + "<br>" + "Description: " + data.list[i].weather[0].description + "<br>" + "Humidity: " + data.list[i].humidity + "<br>" + "Wind: " + data.list[i].speed + "<br>" + "Pressure: " + data.list[i].pressure);
 			};
+			// Re-runs the geocoder
 			var geocoder = new google.maps.Geocoder();
     		var latlng = new google.maps.LatLng(data.city.coord.lat, data.city.coord.lon)
 	    	geocoder.geocode({ "location": latlng }, function(results, status) {
@@ -161,22 +168,26 @@
 					alert("Geocoding was not successful - STATUS: " + status);
 				}
 			});
+			// Automatically clears the input area
+			input = [];
+			$("#destination").val('');
 		});
 	});
 
+	// The function that runs when you load the page
 	function weather() {
-		$.get("http://api.openweathermap.org/data/2.5/forecast", {
+		$.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
 	    	APPID: "2255408d7aca211f7f864daeee1e71f9",
 	    	q:     "san antonio, tx",
 	    	cnt: 3,
 	    	units: "imperial"
 		}).done(function(data)  {
-			console.log(data);
-			console.log("Current Temp: " + data.list[0].main.temp);
+			console.log(data)
+			// Runs the weather function
 			for(var i = 0; i < data.list.length; i++) {
 				var icon = data.list[i].weather[0].icon
 				console.log(String(icon));
-				display[i].append("<h3>" + data.list[i].main.temp_max + "˚/" + data.list[i].main.temp_min + "˚</h3>" + "<br>" + "<img src='http://openweathermap.org/img/w/10d.png'</img>" + "<br>" + "Description: " + data.list[i].weather[0].description + "<br>" + "Humidity: " + data.list[i].main.humidity + "<br>" + "Wind: " + data.list[i].wind.speed + "<br>" + "Pressure: " + data.list[i].main.pressure);
+				display[i].html("<h3>" + data.list[i].temp.max + "˚/" + data.list[i].temp.min + "˚</h3>" + "<br>" + "<img src='http://openweathermap.org/img/w/10d.png'</img>" + "<br>" + "Description: " + data.list[i].weather[0].description + "<br>" + "Humidity: " + data.list[i].humidity + "<br>" + "Wind: " + data.list[i].speed + "<br>" + "Pressure: " + data.list[i].pressure);
 			};
 			var geocoder = new google.maps.Geocoder();
     		var latlng = new google.maps.LatLng(data.city.coord.lat, data.city.coord.lon)
@@ -189,28 +200,9 @@
 			});
 		});
 	};
-
-	 // function mapit() {
-	 // 	$.get("http://api.openweathermap.org/data/2.5/forecast", {
-	 //    	APPID: "2255408d7aca211f7f864daeee1e71f9",
-	 //    	q:     "san antonio, tx",
-	 //    	cnt: 3,
-	 //    	units: "imperial"
-	 //    });.
-  //   	var geocoder = new google.maps.Geocoder();
-  //   	var latlng = new google.maps.LatLng(data.city.coord.lat, data.city.coord.lng)
-	 //    geocoder.geocode({ "Location": latlng }, function(results, status) {
-		// 	if (status == google.maps.GeocoderStatus.OK) {
-		// 		map.setCenter(results[0].geometry.location);
-		// 	} else {
-		// 		alert("Geocoding was not successful - STATUS: " + status);
-		// 	}
-		// });
-	// };
-
-
-	// mapit();
 	weather();
+	anim();
+})();
 
 	</script>
 
