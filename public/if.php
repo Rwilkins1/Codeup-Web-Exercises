@@ -6,8 +6,8 @@
 
 if ($a < $b) {
      echo "$a is less than $b\n";
-} else if ($b > $a) {
-     echo "$b is greater than $a\n";
+} else {
+     echo "$a is greater than $b\n";
 }
 
 
