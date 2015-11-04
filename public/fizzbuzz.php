@@ -1,7 +1,5 @@
 <?php
 $increment = 1;
-$start = 1;
-$end = 100;
 
 do {
 	fwrite(STDOUT, "Enter a Starting Number: ");
@@ -33,8 +31,15 @@ do {
 	}
 } while (!is_numeric($increment));
 
+if ($start > $end) {
+	$starter = $end;
+	$ender = $start; 
+} else {
+	$starter = $start;
+	$ender = $end;
+}
 
-for ($number = $start; $number <= $end; $number += $increment) {
+for ($number = $starter; $number <= $ender; $number += $increment) {
 	if ($number == 0) {
 		echo $number . "\n";
 	} else if ($number % 15 == 0) {
