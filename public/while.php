@@ -8,8 +8,6 @@ while ($test <= 15) {
 
 // Additional challenge
 
-"\n";
-
 $test2 = 1;
 
 while ($test2 <= 100) {
