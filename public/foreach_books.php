@@ -22,12 +22,12 @@ $books = array(
     )
 );
 
-foreach ($books as $key => $data) {
-	if ($data['published'] > 1950) {
+foreach ($books as $key => $details) {
+	if ($details['published'] > 1950) {
 		echo $key .PHP_EOL;
-		echo "Published in: {$data['published']}" .PHP_EOL;
-		echo "By: {$data['author']}" .PHP_EOL;
-		echo "Pages: {$data['pages']}" .PHP_EOL.PHP_EOL;
+		echo "Published in: {$details['published']}" .PHP_EOL;
+		echo "By: {$details['author']}" .PHP_EOL;
+		echo "Pages: {$details['pages']}" .PHP_EOL.PHP_EOL;
 	}
 }
 ?>
