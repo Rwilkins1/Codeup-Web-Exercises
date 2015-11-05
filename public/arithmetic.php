@@ -20,8 +20,14 @@ function divide($a, $b)
     return $a / $b;
 }
 
+function modulus($a, $b)
+{
+	return $a % $b;
+}
+
 echo add(2, 3) . PHP_EOL;
 echo subtract(5, 3) . PHP_EOL;
 echo multiply(2, 3) . PHP_EOL;
 echo divide(6, 3) . PHP_EOL;
+echo modulus(6, 3) . PHP_EOL;
 ?>
