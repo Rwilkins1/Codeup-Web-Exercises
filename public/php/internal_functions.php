@@ -3,7 +3,19 @@
 // TODO: Create your inspect() function here
 function inspect($argument) 
 {
-	return "The " . gettype($argument) . " is $argument\n";
+	if (is_numeric($argument) || ((is_string($argument)) && !empty($argument))) {
+		return "The " . gettype($argument) . " is $argument\n";
+	} else if (is_null($argument)) {
+		return "The value is NULL\n";
+	} else if (is_array($argument) && !empty($argument)) {
+		return "The value is an array\n";
+	} else if (is_array($argument) && empty($argument)) {
+		return "The value is an empty array\n";
+	} else if (is_bool($argument)) {
+		return "The value is " . (boolval($argument) ? 'true' : 'false') . "\n";
+	} else if (is_string($argument) && empty($argument)) {
+		return "The string is empty\n";
+	}
 }
 
 // Do not mofify these variables!
@@ -34,15 +46,23 @@ echo 'Inspecting $num4:' . PHP_EOL;
 echo inspect($num4);
 
 echo 'Inspecting $null:' . PHP_EOL;
+echo inspect($null);
 
 echo 'Inspecting $bool1' . PHP_EOL;
+echo inspect($bool1);
+echo (boolval($bool1));
 
 echo 'Inspecting $bool2' . PHP_EOL;
+echo inspect($bool2);
 
 echo 'Inspecting $string1' . PHP_EOL;
+echo inspect($string1);
 
 echo 'Inspecting $string2' . PHP_EOL;
+echo inspect($string2);
 
 echo 'Inspecting $array1' . PHP_EOL;
+echo inspect($array1);
 
 echo 'Inspecting $array2' . PHP_EOL;
+echo inspect($array2);
