@@ -45,4 +45,11 @@ $companies = [
     ]
 ];
 ksort($companies);
-print_r($companies);
+
+foreach ($companies as $companyname => $ceos) {
+    asort($ceos);
+    print_r($companyname.PHP_EOL);
+    print_r($ceos);
+}
+
+
