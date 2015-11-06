@@ -11,4 +11,18 @@ if (is_int($search)) {
 } else {
 	echo "FALSE\n";
 }
+
+function comparison($names, $compare) {
+	$similarities = 0;
+	foreach ($names as $data) {
+		$results = array_search($data, $names);
+		if (in_array($data, $compare)) {
+			$similarities++;
+		}
+	}
+	echo "There are " . $similarities . " similarities between the arrays\n";
+	
+}
+
+echo comparison($names, $compare)
 ?>
