@@ -44,12 +44,15 @@ $companies = [
         'Jean-Louis Gassée'
     ]
 ];
-ksort($companies);
+// ksort($companies);
 
-foreach ($companies as $companyname => $ceos) {
-    asort($ceos);
-    print_r($companyname.PHP_EOL);
-    print_r($ceos);
-}
+// foreach ($companies as $companyname => $ceos) {
+//     asort($ceos);
+//     print_r($companyname.PHP_EOL);
+//     print_r($ceos);
+// }
+
+array_multisort(array_map('count', $companies), SORT_DESC, $companies);
+print_r($companies);
 
 
