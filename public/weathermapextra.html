@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather Map</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<img id = "pic" src = "" ></img>
+	<style>
+		body {
+			background-color: skyblue;
+		}
+		#city {
+			text-align: center;
+		}
+		.show0 {
+			background-color: #C0C0C0;
+			position: absolute;
+			margin-left: 250px;
+			text-align: center;
+			padding-left: 50px;
+			padding-right: 50px;
+			box-shadow: 5px 5px 5px #444;
+		}
+		.show1 {
+			background-color: #C0C0C0;
+			position: absolute;
+			margin-left: 500px;
+			text-align: center;
+			padding-left: 50px;
+			padding-right: 50px;
+			box-shadow: 5px 5px 5px #444;
+		}
+		.show2 {
+			background-color: #C0C0C0;
+			position: absolute;
+			margin-left: 770px;
+			text-align: center;
+			padding-left: 50px;
+			padding-right: 50px;
+			box-shadow: 5px 5px 5px #444;
+		}
+		 #map-canvas {
+            width: 770px;
+            height: 400px;
+            position: absolute;
+            margin-top: 300px;
+            margin-left: 250px;
+        }
+        form {
+        	position: absolute;
+        	margin-top: 250px;
+        	margin-left: 450px;
+        }
+
+	</style>
+</head>
+<body>
+	<!-- Weather Description -->
+	<h1 id = "city">San Antonio</h1>
+	<div class = "show0"></div><div class = "show1"></div><div class = "show2"></div>
+
+	<!-- The inputs -->
+	<form id ="lalo" method="GET" action="weather_map.html">
+		<label for = "latitude"></label>
+		<input id = "latitude" name = "latitude" type = "text" placeholder = "Enter a Latitude">
+		<label for = "longitude"></label>
+		<input id = "longitude" name="longitude" type="text" placeholder="Enter a Longitude">
+		<a id = "Submit">Submit</a>
+	</form> 
+
+	<!-- The Map -->
+	<div id="map-canvas"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0mcXvTkmVhgIgIvKOz28NVJf-TEC7spU"></script>
+
+	<script src="js/jquery.js"></script>
+	<script>
+	var display = [];
+	display[0] = $(".show0");
+	display[1] = $(".show1");
+	display[2] = $(".show2");
+	var latit = document.forms.lalo.latitude;
+	var input = [];
+	var latin = input;
+	var input2 = [];
+	var longin = input2;
+
+	$.get("http://api.openweathermap.org/data/2.5/forecast", {
+    	APPID: "2255408d7aca211f7f864daeee1e71f9",
+    	q:     "San Antonio, TX",
+    	cnt: 3,
+    	units: "imperial"
+	}).done(function(data)  {
+		console.log(data);
+		console.log("Current Temp: " + data.list[0].main.temp);
+		for(var i = 0; i < data.list.length; i++) {
+			var icon = data.list[i].weather[0].icon
+			console.log(String(icon));
+			display[i].append("<h3>" + data.list[i].main.temp_max + "˚/" + data.list[i].main.temp_min + "˚</h3>" + "<br>" + "<img src='http://openweathermap.org/img/w/10d.png'</img>" + "<br>" + "Description: " + data.list[i].weather[0].description + "<br>" + "Humidity: " + data.list[i].main.humidity + "<br>" + "Wind: " + data.list[i].wind.speed + "<br>" + "Pressure: " + data.list[i].main.pressure);
+		}
+	});
+
+
+
+	var mapOptions = {
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: {
+                lat:  29.42412,
+                lng: -98.493629 
+            }
+        };
+
+    function latinput() {
+	    $(document).keyup(function(event) {
+	    	var enter = event.which;
+	    	if (enter == 49) {
+	    		input.push(1);
+	    	} else if (enter == 50) {
+	    		input.push(2);
+	    	} else if (enter == 51) {
+	    		input.push(3);
+	    	} else if (enter == 52) {
+	    		input.push(4);
+	    	} else if (enter == 53) {
+	    		input.push(5);
+	    	} else if (enter == 54) {
+	    		input.push(6);
+	    	} else if (enter == 55) {
+	    		input.push(7);
+	    	} else if (enter == 56) {
+	    		input.push(8);
+	    	} else if (enter == 57) {
+	    		input.push(9);
+	    	} else if (enter == 48) {
+	    		input.push(0);
+	    	} else if (enter == 190) {
+	    		input.push(".");
+	    	} else if (enter == 189) {
+	    		input.push("-");
+	    	}
+
+	    });
+	};
+
+	function longinput() {
+		$(document).keyup(function(event) {
+			var enter = event.which;
+			if (enter == 49) {
+	    		input2.push(1);
+	    	} else if (enter == 50) {
+	    		input2.push(2);
+	    	} else if (enter == 51) {
+	    		input2.push(3);
+	    	} else if (enter == 52) {
+	    		input2.push(4);
+	    	} else if (enter == 53) {
+	    		input2.push(5);
+	    	} else if (enter == 54) {
+	    		input2.push(6);
+	    	} else if (enter == 55) {
+	    		input2.push(7);
+	    	} else if (enter == 56) {
+	    		input2.push(8);
+	    	} else if (enter == 57) {
+	    		input2.push(9);
+	    	} else if (enter == 48) {
+	    		input2.push(0);
+	    	} else if (enter == 190) {
+	    		input2.push(".");
+	    	} else if (enter == 189) {
+	    		input2.push("-");
+	    	}
+		});
+	};
+
+	$("#latitude").click(function(){
+		latinput();
+	});
+
+	$("#longitude").click(function(){
+		longinput();
+	});
+
+    $("#Submit").click(function(){
+		console.log(latin.join(""));
+		console.log(longin.join(""));
+	});
+
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	</script>
+
+</body>
+</html>
