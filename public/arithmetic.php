@@ -8,7 +8,7 @@ function add($a, $b)
 	if (is_numeric($a) && is_numeric($b)) {
     	return $a + $b;
     } else {
-    	return "Warning: Invalid Characters";
+    	return error($a, $b);
     }
 }
 
@@ -17,7 +17,7 @@ function subtract($a, $b)
 	if (is_numeric($a) && is_numeric($b)) {
     	return $a - $b;
 	} else {
-		return "Warning: Invalid Characters";
+		return error($a, $b);
 	}
 }
 
@@ -30,7 +30,7 @@ function multiply($a, $b)
 	    }
 	    return $i;
 	} else {
-		return "Warning: Invalid Characters";
+		return error($a, $b);
 	}
 }
 
@@ -43,7 +43,7 @@ function divide($a, $b)
     		return $a / $b;
     	}
     } else {
-    	return "Warning: Invalid Characters";
+    	return error($a, $b);
     }
 }
 
@@ -52,13 +52,17 @@ function modulus($a, $b)
 	if (is_numeric($a) && is_numeric($b)) {
 		return $a % $b;
 	} else {
-		return "Warning: Invalid Characters";
+		return error($a, $b);
 	}
 }
 
+function error($a, $b)
+{
+	return "Warning: Invalid Characters.\nFirst Argument is a(n) " . gettype($a) . " & Second Argument is a(n) " . gettype($b) . ".\nBoth arguments must be numeric";
+}
 echo add($a, $b) . PHP_EOL;
 echo subtract($a, $b) . PHP_EOL;
-echo multiply("Hello!", 4) . PHP_EOL;
+echo multiply("Hello", true) . PHP_EOL;
 echo divide($a, 0) . PHP_EOL;
 echo modulus(2, 2) . PHP_EOL;
 ?>
