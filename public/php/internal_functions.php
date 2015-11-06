@@ -8,7 +8,7 @@ function inspect($argument)
 	} else if (is_null($argument)) {
 		return "The value is NULL\n";
 	} else if (is_array($argument) && !empty($argument)) {
-		return "The value is an array\n";
+		return "The value is an array with contents: [$argument[0], $argument[1], $argument[2]]\n";
 	} else if (is_array($argument) && empty($argument)) {
 		return "The value is an empty array\n";
 	} else if (is_bool($argument)) {
