@@ -2,18 +2,26 @@
 
 function inspect($argument) 
 {
-	if (is_numeric($argument) || ((is_string($argument)) && !empty($argument))) {
-		return "The " . gettype($argument) . " is $argument\n";
-	} else if (is_null($argument)) {
-		return "The value is NULL\n";
-	} else if (is_array($argument) && !empty($argument)) {
-		return "The value is an array with contents: [$argument[0], $argument[1], $argument[2]]\n";
-	} else if (is_array($argument) && empty($argument)) {
-		return "The value is an empty array\n";
-	} else if (is_bool($argument)) {
-		return "The value is " . (boolval($argument) ? 'true' : 'false') . "\n";
-	} else if (is_string($argument) && empty($argument)) {
-		return "The string is empty\n";
+	if (is_numeric($argument) || (is_string($argument))) {
+		if (is_numeric($argument) || !empty($argument)) {
+			return "The " . gettype($argument) . " is $argument\n";
+		} else if (is_string($argument) && empty($argument)) {
+			return "The " . gettype($argument) . " is empty\n";
+		}
+	} else if (is_array($argument)) {
+		if (!empty($argument)) {
+			return "The value is an array with contents: [$argument[0], $argument[1], $argument[2]]\n";
+		} else {
+			return "The value is an empty array\n";
+		}
+	} else {
+		if (is_null($argument)) {
+			return "The value is NULL\n";
+		} else if (is_bool($argument)) {
+			return "The boolean value is " . (boolval($argument) ? 'true' : 'false') . "\n";
+		} else {
+			return "The value is somethine else\n";
+		}
 	}
 }
 
