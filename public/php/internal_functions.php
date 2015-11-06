@@ -1,6 +1,5 @@
 <?php
 
-// TODO: Create your inspect() function here
 function inspect($argument) 
 {
 	if (is_numeric($argument) || ((is_string($argument)) && !empty($argument))) {
@@ -18,7 +17,6 @@ function inspect($argument)
 	}
 }
 
-// Do not mofify these variables!
 $string1 = "I'm a little teapot";
 $string2 = '';
 $array1 = [];
@@ -30,8 +28,6 @@ $num2 = 0.0;
 $num3 = 12;
 $num4 = 14.4;
 $null = NULL;
-
-// TODO: After each echo statement, use inspect() to output the variable's type and its value
 
 echo 'Inspecting $num1:' . PHP_EOL;
 echo inspect($num1);
@@ -50,7 +46,6 @@ echo inspect($null);
 
 echo 'Inspecting $bool1' . PHP_EOL;
 echo inspect($bool1);
-echo (boolval($bool1));
 
 echo 'Inspecting $bool2' . PHP_EOL;
 echo inspect($bool2);
@@ -66,3 +61,4 @@ echo inspect($array1);
 
 echo 'Inspecting $array2' . PHP_EOL;
 echo inspect($array2);
+?>
