@@ -18,15 +18,6 @@ function humanizedList($physicistsarray, $argc, $argv) {
 		asort($famousfakephysicists);
 	}
 	
-	// for($i = 0; $i < count($physicistsarray); $i++) {
-	// 	asort($physicistsarray);
-	// 	if($i == (count($physicistsarray)-1)) {
-	// 		array_push($famousfakephysicists, "and " . $physicistsarray[$i]);
-	// 	} else {
-	// 		array_push($famousfakephysicists, $physicistsarray[$i]);
-	// 	}
-	// 	print_r($famousfakephysicists);
-	// }
 	$famousfakephysicists1 = implode(', ', $famousfakephysicists);
 	echo "Some of the most famous fictional theoretical physicists are $famousfakephysicists1.\n";
 }
