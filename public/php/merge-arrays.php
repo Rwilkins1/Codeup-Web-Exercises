@@ -27,11 +27,19 @@ function comparison($names, $compare) {
 
 function combine_arrays($names, $compare) {
 	$newarray = [];
-	for ($i = 0; $i <= 4; $i++) {
-		array_push($newarray, $names[$i], $compare[$i]);
-		if (in_array($names[$i], $compare)) {
-			array_pop($newarray);
+	for ($i = 0; $i < count($names) || $i < count($compare); $i++) {
+
+		if (!empty($names[$i]) && !empty($compare[$i])) {
+			array_push($newarray, $names[$i], $compare[$i]);
+			if (in_array($names[$i], $compare)) {
+				array_pop($newarray);
+			}
+		} else if (!empty($names[$i]) && empty($compare[$i])) {
+			array_push($newarray, $names[$i]);
+		} else if (empty($names[$i]) && !empty($compare[$i])) {
+			array_push($newarray, $compare[$i]);
 		}
+		
 	}
 	print_r($newarray);
 }
