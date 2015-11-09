@@ -5,12 +5,12 @@ $names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
 $compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
 
 function isitthere($names) {
-	$search = array_search('Tina', $names, $strict = TRUE);
+	$search = array_search('Dana', $names, $strict = TRUE);
 
 	if (is_int($search)) {
-		echo "TRUE\n";
+		return "TRUE\n";
 	} else {
-		echo "FALSE\n";
+		return "FALSE\n";
 	}
 }
 
@@ -22,7 +22,7 @@ function comparison($names, $compare) {
 			$similarities++;
 		}
 	}
-	echo "There are " . $similarities . " similarities between the arrays\n";
+	return "There are " . $similarities . " similarities between the arrays\n";
 }
 
 echo isitthere($names);

@@ -29,8 +29,9 @@ function combine_arrays($names, $compare) {
 	$newarray = [];
 	for ($i = 0; $i <= 4; $i++) {
 		array_push($newarray, $names[$i], $compare[$i]);
-		if (in_array($names[$i], $compare))
+		if (in_array($names[$i], $compare)) {
 			array_pop($newarray);
+		}
 	}
 	print_r($newarray);
 }
