@@ -5,7 +5,7 @@ $names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
 $compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
 
 function isitthere($names) {
-	$search = array_search('Dana', $names, $strict = TRUE);
+	$search = array_search('Mike', $names, $strict = TRUE);
 
 	if (is_int($search)) {
 		echo "TRUE\n";
