@@ -21,8 +21,6 @@ function logerror()
 	logMessage("[ERROR]", "Err time gon' doit!");
 }
 
-if(1 == 2) {
-	loginfo();
-} else {
-	logerror();
-}
+loginfo();
+logerror();
+
