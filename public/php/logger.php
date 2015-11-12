@@ -2,9 +2,10 @@
 
 function logMessage($loglevel, $message)
 {
+	date_default_timezone_set('America/Chicago');
 	$date=date('Y-m-d');
     $handle = fopen("$date.log", 'a');
-    $content = trim(fwrite($handle, date('Y-m-d h:i:s A') . "  " . $loglevel . "  " . $message . PHP_EOL));
+    $content = trim(fwrite($handle, date('Y-m-d h:i:s A T') . "  " . $loglevel . "  " . $message . PHP_EOL));
 
     fclose($handle);
     return $content . PHP_EOL;
