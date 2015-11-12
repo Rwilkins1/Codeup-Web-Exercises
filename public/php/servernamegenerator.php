@@ -37,9 +37,7 @@ $norand = array_rand($nouns);
 </head>
 <body>
 	<h2>Your Server Name is:</h2>
-	<h3><?php 
-	echo $adjectives[$adrand] . " " . $nouns[$norand];
-	?></h3>
+	<h3><?= $adjectives[$adrand] . " " . $nouns[$norand];?></h3>
 
 </body>
 </html>

@@ -8,12 +8,12 @@ $things = array("Movie" => "The Tree of Life", "Band" => "Evanescence", "Music G
 </head>
 <body>
 	<table>
-	<?php foreach($things as $thing => $subs) { ?>
+	<?php foreach($things as $thing => $subs): ?>
 		<tr>
-		<th><?php echo $thing ?></th>
-		<td><?php echo $subs ?></td>
+		<th><?= $thing ?></th>
+		<td><?= $subs ?></td>
 		</tr>
-		<?php } ?>
+		<?php endforeach; ?>
 	</table>
 </body>
 </html>
