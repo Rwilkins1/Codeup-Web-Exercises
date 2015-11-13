@@ -1,8 +1,20 @@
 <?php 
-$adjectives = array("Swankey", "Culturally Insensative", "Starving", "Hipster", "Self-Righteous", "Slightly Above-Average", "Participation Award-Winning", "One-Eyed One-Horned Flying Purple", "Swaggariffic", "Psychoneuroendocrinological");
-$nouns = array("Hipster", "Chartered Accountant", "Hypochondriac", "Otorhinolaryngologist", "Walrus", "Starburst", "Hello Kitty Fun Kart", "Gungan", "People Eater", "PTO Mom");
-$adrand = array_rand($adjectives);
-$norand = array_rand($nouns);
+function pagecontroller() {
+	$adjectives = array("Swankey", "Culturally Insensative", "Starving", "Hipster", "Self-Righteous", "Slightly Above-Average", "Participation Award-Winning", "One-Eyed One-Horned Flying Purple", "Swaggariffic", "Psychoneuroendocrinological");
+	$nouns = array("Hipster", "Chartered Accountant", "Hypochondriac", "Otorhinolaryngologist", "Walrus", "Starburst", "Hello Kitty Fun Kart", "Gungan", "People Eater", "PTO Mom");
+	$adrand = array_rand($adjectives);
+	$norand = array_rand($nouns);
+	$name = $adjectives[$adrand] . " " . $nouns[$norand];
+	return array (
+		'adjectives' => $adjectives,
+		'nouns' => $nouns,
+		'adrand' => $adrand,
+		'norand' => $norand,
+		'name' => $name
+	);
+}
+
+extract(pagecontroller());
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,7 +49,7 @@ $norand = array_rand($nouns);
 </head>
 <body>
 	<h2>Your Server Name is:</h2>
-	<h3><?= $adjectives[$adrand] . " " . $nouns[$norand];?></h3>
+	<h3><?= $name;?></h3>
 
 </body>
 </html>
