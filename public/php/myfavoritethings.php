@@ -1,5 +1,11 @@
 <?php
-$things = array("Movie" => "The Tree of Life", "Band" => "Evanescence", "Music Genre" => "Folk", "Video Game" => "Dragon Age: Origins", "Superhero" => "Batman");
+function pagecontroller() {
+	$things = array("Movie" => "The Tree of Life", "Band" => "Evanescence", "Music Genre" => "Folk", "Video Game" => "Dragon Age: Origins", "Superhero" => "Batman");
+	return array(
+		'things' => $things
+	);
+}
+extract(pagecontroller());
 ?>
 <!DOCTYPE html>
 <html>
