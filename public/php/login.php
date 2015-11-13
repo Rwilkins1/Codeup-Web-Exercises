@@ -1,6 +1,13 @@
 <?php
 $name = isset($_POST['username']) ? $_POST['username'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
+if ($name == "guest" && $password == "password") {
+	header('location: authorized.php');
+} else {
+	if (isset($_POST['username']) && isset($_POST['password'])) {
+		header('location: failed.php');
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,8 +15,6 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 	<title>Login</title>
 </head>
 <body>
-	<h2>Hello, <?= $name ?></h2>
-	<h3>Your password is <?= $password?></h3>
 	<form method = "POST" action = "login.php">
 		<p>
 		<label for "username">Username</label>
