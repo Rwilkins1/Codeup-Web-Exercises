@@ -1,7 +1,7 @@
 <?php
 $name = isset($_POST['username']) ? $_POST['username'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
-if ($name == "guest" && $password == "password") {
+if (($name == "guest" || $name == "Guest") && ($password == "password" || $password == "Password")) {
 	header('location: authorized.php');
 } else {
 	if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -22,7 +22,7 @@ if ($name == "guest" && $password == "password") {
 		</p>
 		<p>
 		<label for "password">Password</label>
-		<input type = "text" id = "password" name = "password">
+		<input type = "password" id = "password" name = "password">
 		</p>
 		<button type = "submit" value = "submit">Submit</button>
 	</form>
