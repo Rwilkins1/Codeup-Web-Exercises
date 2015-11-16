@@ -35,7 +35,6 @@ if (($name == "guest" || $name == "Guest") && ($password == "password" || $passw
 		<input type = "password" id = "password" name = "password">
 		</p>
 		<button type = "submit" value = "submit">Submit</button>
-		<a href="logout.php">Log Out</a>
 	</form>
 </body>
 </html>

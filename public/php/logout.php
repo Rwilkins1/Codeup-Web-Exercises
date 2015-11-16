@@ -19,6 +19,8 @@ function endSession()
     session_destroy();
 }
 endSession();
+header('location: login.php');
+die();
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +29,5 @@ endSession();
 	<title>Log Out</title>
 </head>
 <body>
-	<h2>You are now logged out</h2>
-	<a href="login.php">Log In</a>
 </body>
 </html>
