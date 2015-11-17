@@ -1,5 +1,7 @@
 <?php
 session_start();
+require 'functions.php';
+
 $sessionid = session_id();
 $name = isset($_POST['username']) ? $_POST['username'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
@@ -25,6 +27,10 @@ if (($name == "guest" || $name == "Guest") && ($password == "password" || $passw
 </head>
 <body>
 	Session ID = <?= $sessionid ?>
+	<br>
+	Key is available: <?= inputhas('Loggedinuser') . PHP_EOL ?>
+	<?= inputget('Loggedinuser') . PHP_EOL ?>
+
 	<form method = "POST" action = "login.php">
 		<p>
 		<label for "username">Username</label>
