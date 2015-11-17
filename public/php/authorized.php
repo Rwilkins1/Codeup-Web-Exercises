@@ -15,10 +15,6 @@ if (empty($_SESSION['Loggedinuser'])) {
 <body>
 Session ID = <?= $sessionid ?>
 <br>
-Key is available: <?= inputhas('Loggedinuser')?>
-<br>
-Key = <?= inputget('Loggedinuser')?>
-<br>
 Input = <?= escape('Loggedinuser') ?>
 <h1>You are authorized to enter. Welcome, <?= $_SESSION['Loggedinuser']?>!</h1>
 <a href="logout.php">Log Out</a>
