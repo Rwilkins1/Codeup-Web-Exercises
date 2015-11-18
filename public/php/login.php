@@ -23,7 +23,7 @@ if(!empty($_SESSION['Loggedinuser'])) {
 	<br>
 	Key is available: <?= Input::has('Loggedinuser') ?>
 	<br>
-	Logged in: <?= Auth::check() ?>
+
 
 	<form method = "POST" action = "login.php">
 		<p>

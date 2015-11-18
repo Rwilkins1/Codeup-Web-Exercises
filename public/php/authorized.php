@@ -16,7 +16,8 @@ if (empty($_SESSION['Loggedinuser'])) {
 </head>
 <body>
 Session ID = <?= $sessionid ?>
-Logged in: <?= Auth::check() ?>
+<br>
+Logged in: <?= Auth::check(Input::get('Loggedinuser')) ?>
 <br>
 Input = <?= Input::get('Loggedinuser') ?>
 <h1>You are authorized to enter. Welcome, <?= Auth::user(Input::get('Loggedinuser'))?>!</h1>

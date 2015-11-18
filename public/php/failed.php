@@ -1,4 +1,5 @@
 <?php
+require '../../Auth.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -6,7 +7,8 @@
 	<title>Error</title>
 </head>
 <body>
-<h1>There was an error logging in</h1>
+<?= Auth::check(Input::get('Loggedinuser')) ?>
+<br>
 <a href="login.php">Back to login</a>
 </body>
 </html>
