@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'functions.php';
+require '../../Input.php';
 require_once '../../Auth.php';
 $sessionid = session_id();
 if (empty($_SESSION['Loggedinuser'])) {
@@ -18,8 +18,8 @@ if (empty($_SESSION['Loggedinuser'])) {
 Session ID = <?= $sessionid ?>
 Logged in: <?= Auth::check() ?>
 <br>
-Input = <?= escape('Loggedinuser') ?>
-<h1>You are authorized to enter. Welcome, <?= Auth::user()?>!</h1>
+Input = <?= Input::get('Loggedinuser') ?>
+<h1>You are authorized to enter. Welcome, <?= Auth::user(Input::get('Loggedinuser'))?>!</h1>
 <a href="logout.php">Log Out</a>
 </body>
 </html>

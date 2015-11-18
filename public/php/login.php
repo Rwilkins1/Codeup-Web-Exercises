@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'functions.php';
+require '../../Input.php';
 require_once '../../Auth.php';
 $hashpass = password_hash('password', PASSWORD_DEFAULT);
 $sessionid = session_id();
@@ -21,7 +21,7 @@ if(!empty($_SESSION['Loggedinuser'])) {
 <body>
 	Session ID = <?= $sessionid ?>
 	<br>
-	Key is available: <?= inputhas('Loggedinuser') ?>
+	Key is available: <?= Input::has('Loggedinuser') ?>
 	<br>
 	Logged in: <?= Auth::check() ?>
 
