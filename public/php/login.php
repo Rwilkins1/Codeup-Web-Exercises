@@ -1,24 +1,17 @@
 <?php
 session_start();
 require 'functions.php';
-
+require_once '../../Auth.php';
+$hashpass = password_hash('password', PASSWORD_DEFAULT);
 $sessionid = session_id();
 $name = isset($_POST['username']) ? $_POST['username'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
+Auth::attempt($name, $password, $hashpass);
 if(!empty($_SESSION['Loggedinuser'])) {
 	header('location: authorized.php');
 	die();
 }
-if (($name == "guest" || $name == "Guest") && ($password == "password" || $password == "Password")) {
-	header('location: authorized.php');
-	$_SESSION['Loggedinuser'] = $name;
-	die();
-} else {
-	if (isset($_POST['username']) && isset($_POST['password'])) {
-		header('location: failed.php');
-		die();
-	}
-}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,8 +21,9 @@ if (($name == "guest" || $name == "Guest") && ($password == "password" || $passw
 <body>
 	Session ID = <?= $sessionid ?>
 	<br>
-	Key is available: <?= inputhas('Loggedinuser') . PHP_EOL ?>
-	<?= inputget('Loggedinuser') . PHP_EOL ?>
+	Key is available: <?= inputhas('Loggedinuser') ?>
+	<br>
+	Logged in: <?= Auth::check() ?>
 
 	<form method = "POST" action = "login.php">
 		<p>

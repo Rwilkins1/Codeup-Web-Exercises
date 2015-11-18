@@ -1,11 +1,13 @@
 <?php
 session_start();
 require 'functions.php';
+require_once '../../Auth.php';
 $sessionid = session_id();
 if (empty($_SESSION['Loggedinuser'])) {
 	header('location: login.php');
 	die();
 } 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,9 +16,10 @@ if (empty($_SESSION['Loggedinuser'])) {
 </head>
 <body>
 Session ID = <?= $sessionid ?>
+Logged in: <?= Auth::check() ?>
 <br>
 Input = <?= escape('Loggedinuser') ?>
-<h1>You are authorized to enter. Welcome, <?= $_SESSION['Loggedinuser']?>!</h1>
+<h1>You are authorized to enter. Welcome, <?= Auth::user()?>!</h1>
 <a href="logout.php">Log Out</a>
 </body>
 </html>
