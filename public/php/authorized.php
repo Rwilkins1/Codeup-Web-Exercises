@@ -15,11 +15,8 @@ if (empty($_SESSION['Loggedinuser'])) {
 	<title>Authorized</title>
 </head>
 <body>
-Session ID = <?= $sessionid ?>
-<br>
 Logged in: <?= Auth::check(Input::get('Loggedinuser')) ?>
 <br>
-Input = <?= Input::get('Loggedinuser') ?>
 <h1>You are authorized to enter. Welcome, <?= Auth::user(Input::get('Loggedinuser'))?>!</h1>
 <a href="logout.php">Log Out</a>
 </body>

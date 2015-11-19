@@ -1,12 +1,11 @@
 <?php
 session_start();
-require '../../Input.php';
+require_once '../../Input.php';
 require_once '../../Auth.php';
-$hashpass = password_hash('password', PASSWORD_DEFAULT);
-$sessionid = session_id();
+
 $name = isset($_POST['username']) ? $_POST['username'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
-Auth::attempt($name, $password, $hashpass);
+Auth::attempt($name, $password);
 if(!empty($_SESSION['Loggedinuser'])) {
 	header('location: authorized.php');
 	die();
@@ -19,11 +18,6 @@ if(!empty($_SESSION['Loggedinuser'])) {
 	<title>Login</title>
 </head>
 <body>
-	Session ID = <?= $sessionid ?>
-	<br>
-	Key is available: <?= Input::has('Loggedinuser') ?>
-	<br>
-
 
 	<form method = "POST" action = "login.php">
 		<p>
