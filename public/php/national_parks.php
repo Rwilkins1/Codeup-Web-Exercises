@@ -19,6 +19,44 @@
 <html>
 <head>
 	<title>National Parks</title>
+	<style type="text/css">
+		body {
+			background-color: green;
+			text-align: center;
+		}
+		table {
+			background-color: gray;
+			color: black;
+			margin-bottom: 15px;
+			margin-left: 32%;
+			margin-top: -15px;
+			box-shadow: 5px 5px 5px black;
+			border: 1px solid black;
+		}
+		th {
+			border: 1px solid black;
+		}
+		td {
+			border: 1px solid black;
+			background-color: #C0C0C0;
+			padding: 15px;
+		}
+		td:hover {
+			background-color: white;
+			box-shadow: 5px 5px 5px black;
+		}
+		a {
+			background-color: #444;
+			color: orange;
+			box-shadow: 2px 2px 2px gray inset;
+			padding: 8px;
+			text-decoration: none;
+		}
+		a:active {
+			background-color: gray;
+			box-shadow: 5px 5px 5px #444 inset;
+		}
+	</style>
 </head>
 <body>
 	<h2>National Parks</h2>
@@ -29,7 +67,6 @@
 				<th>Location:</th>
 				<th>Date Established:</th>
 				<th>Area in Acres:</th>
-				
 			</tr>
 		<?php
 			foreach($stmt as $parkarray) { ?>
@@ -41,10 +78,12 @@
 			</tr>
 			<?php } ?>
 	</table>
+
 	<?php
 		if(isset($_GET['page']) && $_GET['page'] != 1) { ?>
 			<a id = "previous" href="national_parks.php?page=<?=$page-1?>"><?="Previous Page"?></a>
 		<?php } ?>
+
 	<?php
 		if(!isset($_GET['page']) || $_GET['page'] < 3) { ?>
 			<a id = "next" href="national_parks.php?page=<?=$page+1?>"><?="Next Page"?></a>
