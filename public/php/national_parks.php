@@ -2,7 +2,7 @@
 	require '../../parks_login.php';
 	require '../../db_connect.php';
 	$query = 'SELECT * FROM national_parks LIMIT 4 OFFSET ';
-	$page = isset($_GET['page']) ? $_GET['page'] : 1; 
+	$page = isset($_GET['page']) ? round($_GET['page']) : 1; 
 	if(isset($_GET['page']) && (($_GET['page'] > 3 || $_GET['page'] < 1) || !is_numeric($_GET['page']))) {
 		header('location: national_parks.php');
 		die();
