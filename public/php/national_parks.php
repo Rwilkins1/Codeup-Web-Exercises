@@ -86,5 +86,10 @@
 		if(!isset($_GET['page']) || $_GET['page'] < 3) { ?>
 			<a id = "next" href="national_parks.php?page=<?=$page+1?>">Next Page</a>
 		<?php } ?>
+
+	<?php
+		if(isset($_GET['page']) && $_GET['page'] == 3) { ?>
+			<a id = "home" href = "national_parks.php">Home</a>
+		<?php } ?>
 </body>
 </html>
