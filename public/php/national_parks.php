@@ -1,18 +1,14 @@
 <?php
 	require '../../parks_login.php';
 	require '../../db_connect.php';
-	$query1 = 'SELECT * FROM national_parks LIMIT 4';
-	$query2 = 'SELECT * FROM national_parks LIMIT 4 OFFSET 4';
-	$query3 = 'SELECT * FROM national_parks LIMIT 4 OFFSET 8';
+	$query = 'SELECT * FROM national_parks LIMIT 4 OFFSET ';
 	$page = isset($_GET['page']) ? $_GET['page'] : 1; 
-	if(!isset($_GET['page'])) {
-		$stmt = $dbc->query($query1)->fetchAll(PDO::FETCH_ASSOC);
-	} else if ($_GET['page'] == 1) {
-		$stmt = $dbc->query($query1)->fetchAll(PDO::FETCH_ASSOC);
-	} else if($_GET['page'] == 2) {
-		$stmt = $dbc->query($query2)->fetchAll(PDO::FETCH_ASSOC);
-	} else if ($_GET['page'] == 3) {
-		$stmt = $dbc->query($query3)->fetchAll(PDO::FETCH_ASSOC);
+	$offset = (($page-1)*4);
+	$stmt = $dbc->query($query . $offset)->fetchAll(PDO::FETCH_ASSOC);
+
+	if(isset($_GET['page']) && ($_GET['page'] > 3 || $_GET['page'] < 1)) {
+		header('location: national_parks.php');
+		die();
 	}
 ?>
 <!DOCTYPE html>
@@ -21,8 +17,10 @@
 	<title>National Parks</title>
 	<style type="text/css">
 		body {
-			background-color: green;
+			background-image: url(../img/forest.png);
 			text-align: center;
+			color: orange;
+			text-shadow: 5px 5px 5px solid black;
 		}
 		table {
 			background-color: gray;
@@ -63,10 +61,10 @@
 
 	<table>
 			<tr>	
-				<th>Park Name:</th>
-				<th>Location:</th>
-				<th>Date Established:</th>
-				<th>Area in Acres:</th>
+				<th>Park Name</th>
+				<th>Location</th>
+				<th>Date Established</th>
+				<th>Area in Acres</th>
 			</tr>
 		<?php
 			foreach($stmt as $parkarray) { ?>
@@ -81,12 +79,12 @@
 
 	<?php
 		if(isset($_GET['page']) && $_GET['page'] != 1) { ?>
-			<a id = "previous" href="national_parks.php?page=<?=$page-1?>"><?="Previous Page"?></a>
+			<a id = "previous" href="national_parks.php?page=<?=$page-1?>">Previous Page</a>
 		<?php } ?>
 
 	<?php
 		if(!isset($_GET['page']) || $_GET['page'] < 3) { ?>
-			<a id = "next" href="national_parks.php?page=<?=$page+1?>"><?="Next Page"?></a>
+			<a id = "next" href="national_parks.php?page=<?=$page+1?>">Next Page</a>
 		<?php } ?>
 </body>
 </html>
