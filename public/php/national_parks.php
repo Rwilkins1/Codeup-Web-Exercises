@@ -3,13 +3,13 @@
 	require '../../db_connect.php';
 	$query = 'SELECT * FROM national_parks LIMIT 4 OFFSET ';
 	$page = isset($_GET['page']) ? $_GET['page'] : 1; 
-	$offset = (($page-1)*4);
-	$stmt = $dbc->query($query . $offset)->fetchAll(PDO::FETCH_ASSOC);
-
-	if(isset($_GET['page']) && ($_GET['page'] > 3 || $_GET['page'] < 1)) {
+	if(isset($_GET['page']) && (($_GET['page'] > 3 || $_GET['page'] < 1) || !is_numeric($_GET['page']))) {
 		header('location: national_parks.php');
 		die();
 	}
+	$offset = (($page-1)*4);
+	$stmt = $dbc->query($query . $offset)->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,14 +80,12 @@
 	<?php
 		if(isset($_GET['page']) && $_GET['page'] != 1) { ?>
 			<a id = "previous" href="national_parks.php?page=<?=$page-1?>">Previous Page</a>
-		<?php } ?>
+		<?php } 
 
-	<?php
 		if(!isset($_GET['page']) || $_GET['page'] < 3) { ?>
 			<a id = "next" href="national_parks.php?page=<?=$page+1?>">Next Page</a>
-		<?php } ?>
+		<?php }
 
-	<?php
 		if(isset($_GET['page']) && $_GET['page'] == 3) { ?>
 			<a id = "home" href = "national_parks.php">Home</a>
 		<?php } ?>
