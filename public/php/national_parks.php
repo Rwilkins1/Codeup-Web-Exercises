@@ -1,15 +1,17 @@
 <?php
 	require '../../parks_login.php';
 	require '../../db_connect.php';
-	// require '../../park_seeder.php';
 	require '../../input.php';
-
-
+	$maxrows = $dbc->query('SELECT COUNT(*) FROM national_parks');
+	$maxpagecount = $maxrows->fetch(PDO::FETCH_ASSOC);
+	foreach($maxpagecount as $maximum) {
+		$maximumpages = $maximum;
+		print_r($maximumpages);
+	}
+	$maxpage = (ceil($maximumpages/4));
 	$query = $dbc->prepare('SELECT * FROM national_parks LIMIT :lim OFFSET :off');
 	$page = isset($_GET['page']) ? round($_GET['page']) : 1; 
-	// $maxpage = ($dbc->rowCount())/4;
-	// var_dump($maxpage);
-	if(isset($_GET['page']) && (($_GET['page'] > 3 || $_GET['page'] < 1) || !is_numeric($_GET['page']))) {
+	if(isset($_GET['page']) && (($_GET['page'] > $maxpage || $_GET['page'] < 1) || !is_numeric($_GET['page']))) {
 		header('location: national_parks.php');
 		die();
 	}
@@ -18,12 +20,6 @@
 	$query->bindValue(':off', $offset, PDO::PARAM_INT);
 	$query->fetchAll(PDO::FETCH_ASSOC);
 	$query->execute();
-
-	// $name = isset($_POST['parkname']) ? $_POST['parkname'] : '';
-	// $location = isset($_POST['parklocation']) ? $_POST['parklocation'] : '';
-	// $date = isset($_POST['date']) ? $_POST['date'] : '';
-	// $area = isset($_POST['area']) ? $_POST['area'] : '';
-	// $description = isset($_POST['parkdescription']) ? $_POST['parkdescription'] : '';
 
 	function insertpark($dbc)
 	{
@@ -42,19 +38,24 @@
 		$query->bindValue(':description', $description, PDO::PARAM_STR);
 		$query->fetchAll(PDO::FETCH_ASSOC);
 		$query->execute();
-		var_dump($_POST);
 	}
-		// $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
-		// $stmt->fetchAll(PDO::FETCH_ASSOC);
-		// $stmt->execute(array(':name' => $name, ':location' => $location, ':date_established' => $date, ':area_in_acres' => $area, ':description' => $description));
-		// header('location: national_parks.php');
+
+	function deletepark($dbc)
+	{
+		$deletename = Input::get('delete');
+		$deletequery = $dbc->prepare('DELETE FROM national_parks WHERE name = :name');
+		$deletequery->bindValue(':name', $deletename, PDO::PARAM_STR);
+		$deletequery->execute();
+	
+	}
 
 	if(Input::notempty('parkname') && Input::notempty('parklocation') && Input::notempty('date') && Input::notempty('area') && Input::notempty('parkdescription')) {
 		insertpark($dbc);
 	}
 
-	// $stmt = $dbc->query($query . $offset)->fetchAll(PDO::FETCH_ASSOC);
-
+	if(Input::notempty('delete')) {
+		deletepark($dbc);
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -133,17 +134,17 @@
 			<a id = "previous" href="national_parks.php?page=<?=$page-1?>">Previous Page</a>
 		<?php } 
 
-		if(!isset($_GET['page']) || $_GET['page'] < 3) { ?>
+		if(!isset($_GET['page']) || $_GET['page'] < $maxpage) { ?>
 			<a id = "next" href="national_parks.php?page=<?=$page+1?>">Next Page</a>
 		<?php }
 
-		if(isset($_GET['page']) && $_GET['page'] == 3) { ?>
+		if(isset($_GET['page']) && $_GET['page'] == $maxpage) { ?>
 			<a id = "home" href = "national_parks.php">Home</a>
 		<?php } ?>
 
 		<h2>Didn't find the Park you were looking for?</h2>
 		<h3>Fill in the information below</h3>
-		<form method = "POST">
+		<form method = "POST" action = "national_parks.php">
 			<p>
 				<label for "parkname">Park Name</label>
 				<input type = "text" id = "parkname" name = "parkname">
@@ -165,6 +166,15 @@
 				<textarea id = "parkdescription" name = "parkdescription">Enter a short description of the park</textarea>
 			</p>
 			<button type = "submit" value = "submit">Submit</button>
+		</form>
+		<h2>Want to delete a Park?</h2>
+		<h3>Enter the park name below!</h3>
+		<form method = "POST" action = "national_parks.php">
+			<p>
+				<label for "delete">Park to Delete</label>
+				<input type = "text" id = "delete" name = "delete">
+			</p>
+			<button type = "submit" value = "submit">Delete</button>
 		</form>
 </body>
 </html>
