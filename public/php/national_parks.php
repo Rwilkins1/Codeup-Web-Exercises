@@ -1,8 +1,11 @@
 <?php
-	require '../../parks_login.php';
-	require '../../db_connect.php';
+	// require '../../parks_login.php';
+	// require '../../db_connect.php';
+	require '../../park_seeder.php';
 	$query = 'SELECT * FROM national_parks LIMIT 4 OFFSET ';
 	$page = isset($_GET['page']) ? round($_GET['page']) : 1; 
+	// $maxpage = ($dbc->rowCount())/4;
+	// var_dump($maxpage);
 	if(isset($_GET['page']) && (($_GET['page'] > 3 || $_GET['page'] < 1) || !is_numeric($_GET['page']))) {
 		header('location: national_parks.php');
 		die();
@@ -26,13 +29,17 @@
 			background-color: gray;
 			color: black;
 			margin-bottom: 15px;
-			margin-left: 32%;
 			margin-top: -15px;
 			box-shadow: 5px 5px 5px black;
 			border: 1px solid black;
 		}
 		th {
 			border: 1px solid black;
+		}
+		th:hover {
+			background-color: black;
+			color: white;
+			box-shadow: 5px 5px 5px black;
 		}
 		td {
 			border: 1px solid black;
@@ -65,6 +72,7 @@
 				<th>Location</th>
 				<th>Date Established</th>
 				<th>Area in Acres</th>
+				<th>Description</th>
 			</tr>
 		<?php
 			foreach($stmt as $parkarray) { ?>
@@ -73,6 +81,7 @@
 				<td><?=$parkarray['location']?></td>
 				<td><?=$parkarray['date_established']?></td>
 				<td><?=$parkarray['area_in_acres']?></td>
+				<td><?=$parkarray['description']?></td>
 			</tr>
 			<?php } ?>
 	</table>
