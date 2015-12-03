@@ -2,7 +2,7 @@
 	// require '../../parks_login.php';
 	// require '../../db_connect.php';
 	require '../../park_seeder.php';
-	$query = 'SELECT * FROM national_parks LIMIT 4 OFFSET ';
+	$query = $dbc->prepare('SELECT * FROM national_parks LIMIT :lim OFFSET :off');
 	$page = isset($_GET['page']) ? round($_GET['page']) : 1; 
 	// $maxpage = ($dbc->rowCount())/4;
 	// var_dump($maxpage);
@@ -11,7 +11,11 @@
 		die();
 	}
 	$offset = (($page-1)*4);
-	$stmt = $dbc->query($query . $offset)->fetchAll(PDO::FETCH_ASSOC);
+	$query->bindValue(':lim', 4, PDO::PARAM_INT);
+	$query->bindValue(':off', $offset, PDO::PARAM_INT);
+	$query->fetchAll(PDO::FETCH_ASSOC);
+	$query->execute();
+	// $stmt = $dbc->query($query . $offset)->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -75,7 +79,7 @@
 				<th>Description</th>
 			</tr>
 		<?php
-			foreach($stmt as $parkarray) { ?>
+			foreach($query as $parkarray) { ?>
 			<tr>
 				<td><?=$parkarray['name']?></td>
 				<td><?=$parkarray['location']?></td>
