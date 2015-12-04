@@ -6,6 +6,7 @@ class Square extends Rectangle
 {
 	public function __construct($height)
 	{
+		parent::__construct($height, $height);
 		$this->height = $height;
 		$this->width = $height;
 	}
