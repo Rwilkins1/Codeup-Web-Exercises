@@ -6,9 +6,7 @@ class Square extends Rectangle
 {
 	public function __construct($height)
 	{
-		$this->height = $height;
-		$this->width = $height;
-		parent::__construct($this->height, $this->width);
+		parent::__construct($height, $height);
 	}
 
 	public function area()
