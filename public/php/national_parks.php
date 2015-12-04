@@ -1,16 +1,21 @@
 <?php
+// Allows me to connect to the database and grab keys
 	require '../../parks_login.php';
 	require '../../db_connect.php';
 	require '../../input.php';
+
+// Sets the maximum number of pages depending on the row count
 	$maxrows = $dbc->query('SELECT COUNT(*) FROM national_parks');
 	$maxpagecount = $maxrows->fetch(PDO::FETCH_ASSOC);
 	foreach($maxpagecount as $maximum) {
 		$maximumpages = $maximum;
-		print_r($maximumpages);
 	}
 	$maxpage = (ceil($maximumpages/4));
+
+// Puts the seeder information/Initial database information on the page
 	$query = $dbc->prepare('SELECT * FROM national_parks LIMIT :lim OFFSET :off');
 	$page = isset($_GET['page']) ? round($_GET['page']) : 1; 
+	// If you try to enter a nonexistant page, you get sent back to the start
 	if(isset($_GET['page']) && (($_GET['page'] > $maxpage || $_GET['page'] < 1) || !is_numeric($_GET['page']))) {
 		header('location: national_parks.php');
 		die();
@@ -21,6 +26,7 @@
 	$query->fetchAll(PDO::FETCH_ASSOC);
 	$query->execute();
 
+// Allows the user to insert a park
 	function insertpark($dbc)
 	{
 		$name = Input::get('parkname');
@@ -40,6 +46,7 @@
 		$query->execute();
 	}
 
+// Allows the user to delete a park based on name
 	function deletepark($dbc)
 	{
 		$deletename = Input::get('delete');
@@ -49,10 +56,12 @@
 	
 	}
 
+// Checks to see if the inputs for the park insertion form are filled.
 	if(Input::notempty('parkname') && Input::notempty('parklocation') && Input::notempty('date') && Input::notempty('area') && Input::notempty('parkdescription')) {
 		insertpark($dbc);
 	}
 
+// Checks to see if the input for the park deletion form is filled.
 	if(Input::notempty('delete')) {
 		deletepark($dbc);
 	}
@@ -130,14 +139,17 @@
 	</table>
 
 	<?php
+	// If not on the first page, show the 'previous' button.
 		if(isset($_GET['page']) && $_GET['page'] != 1) { ?>
 			<a id = "previous" href="national_parks.php?page=<?=$page-1?>">Previous Page</a>
 		<?php } 
 
+	// If not on the last page, show the 'next' button
 		if(!isset($_GET['page']) || $_GET['page'] < $maxpage) { ?>
 			<a id = "next" href="national_parks.php?page=<?=$page+1?>">Next Page</a>
 		<?php }
 
+	// If on the last page, show the 'home' button
 		if(isset($_GET['page']) && $_GET['page'] == $maxpage) { ?>
 			<a id = "home" href = "national_parks.php">Home</a>
 		<?php } ?>
