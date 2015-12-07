@@ -8,14 +8,17 @@ class Square extends Rectangle
 	{
 		parent::__construct($height, $height);
 	}
-
-	public function area()
+	public function setheight($height)
 	{
-		return ($this->height) * ($this->height);
+		$this->height = $height;
 	}
-	public function perimeter()
-	{
-		return 4 * $this->height;
-	}
+	// public function area()
+	// {
+	// 	return ($height) * ($height);
+	// }
+	// public function perimeter()
+	// {
+	// 	return 4 * $height;
+	// }
 }
 ?>
