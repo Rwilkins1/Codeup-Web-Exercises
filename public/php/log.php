@@ -6,7 +6,9 @@ class Log
 
 	private function setfilename()
 	{
-		$this->filename = trim($filename)
+		if (is_string($this->filename)) {
+			$this->filename = trim($filename)
+		}
 	}
 	private function _construct($prefix = "log") 
 	{
