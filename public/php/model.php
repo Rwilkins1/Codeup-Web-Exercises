@@ -53,7 +53,7 @@ class Model
 
 	protected function insert() 
 	{
-		$execution = self::$dbc->prepare('INSERT INTO contacts (email, name, phone, address, city, state, zip) VALUES (:email, :name, :phone, :address, :city, :state, :zip)');
+		$execution = self::$dbc->prepare('INSERT INTO ' . static::$table . ' (email, name, phone, address, city, state, zip) VALUES (:email, :name, :phone, :address, :city, :state, :zip)');
 			
 		$execution->bindValue(':email', $this->email, PDO::PARAM_STR);
 		$execution->bindValue(':name', $this->name, PDO::PARAM_STR);
@@ -74,7 +74,7 @@ class Model
         }
         $updatedinfo = implode(', ', $updatedinfoarray);
         self::dbConnect();
-        $stmt = self::$dbc->prepare('UPDATE contacts SET '. $updatedinfo .' WHERE id = '. $id);
+        $stmt = self::$dbc->prepare('UPDATE ' . static::$table . ' SET '. $updatedinfo .' WHERE id = '. $id);
         
         foreach ($this->attributes as $key => $value) {
             $stmt->bindValue(':'.$key, $this->attributes[$key], PDO::PARAM_STR);
@@ -85,13 +85,13 @@ class Model
 	public static function delete($id)
 	{
 		self::dbConnect();
-		$stmt = self::$dbc->prepare('DELETE FROM contacts WHERE id = ' . $id);
+		$stmt = self::$dbc->prepare('DELETE FROM ' . static::$table . ' WHERE id = ' . $id);
 		$stmt->execute();
 	}
 	public static function find($id)
 	{
 		self::dbConnect();
-		$stmt = self::$dbc->prepare('SELECT * FROM contacts WHERE id = ' . $id);
+		$stmt = self::$dbc->prepare('SELECT * FROM ' . static::$table . ' WHERE id = ' . $id);
 		$stmt->execute();
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -107,7 +107,7 @@ class Model
 	public static function all()
 	{
 		self::dbConnect();
-		$stmt = self::$dbc->prepare('SELECT * FROM contacts');
+		$stmt = self::$dbc->prepare('SELECT * FROM ' . static::$table . '');
 		$stmt->execute();
 		$allresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		return $allresults;
