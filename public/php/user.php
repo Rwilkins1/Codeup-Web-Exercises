@@ -4,8 +4,8 @@ require_once 'Model.php';
 
 class User extends Model 
 {
-	protected static $table = 'users';
+	protected static $table = 'contacts';
 }
 
-echo User::getTableName() . PHP_EOL;
+Model::dbConnect();
 ?>
