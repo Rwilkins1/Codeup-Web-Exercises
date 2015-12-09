@@ -12,13 +12,15 @@ $user1->city = 'San Antonio';
 $user1->state = 'Texas';
 $user1->zip = '78209';
 $user1->save();
-// $user2 = User::find(3);
-// // $user2->id = 3;
-// // $user2->email = "hello.kitty@gmail.com";
-// $user2->name = "Hello Kitty";
-// // $user2->phone = '123-4567';
-// $user2->save();
 
+$user2 = User::find(3);
+// $user2->id = 3;
+// $user2->email = "hello.kitty@gmail.com";
+$user2->name = "Hello Kitty";
+// $user2->phone = '123-4567';
+$user2->save();
+
+print_r(User::all());
 // User::delete(3);
 // // var_dump($user1->id);
 

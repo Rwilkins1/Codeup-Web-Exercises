@@ -81,7 +81,9 @@ class Model
         }
         $updatedinfo = implode(', ', $updatedinfoarray);
         self::dbConnect();
-        $stmt = self::$dbc->prepare('UPDATE ' . static::$table . ' SET '. $updatedinfo .' WHERE id = '. $id);
+        $stmt = self::$dbc->prepare('UPDATE ' . static::$table . ' SET ' . $updatedinfo . ' WHERE id = :id');
+      
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         
         foreach ($this->attributes as $key => $value) {
             $stmt->bindValue(':'.$key, $this->attributes[$key], PDO::PARAM_STR);
@@ -93,7 +95,8 @@ class Model
 	public static function delete($id)
 	{
 		self::dbConnect();
-		$stmt = self::$dbc->prepare('DELETE FROM ' . static::$table . ' WHERE id = ' . $id);
+		$stmt = self::$dbc->prepare('DELETE FROM ' . static::$table . ' WHERE id = :id');
+		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
 	}
 
@@ -101,7 +104,8 @@ class Model
 	public static function find($id)
 	{
 		self::dbConnect();
-		$stmt = self::$dbc->prepare('SELECT * FROM ' . static::$table . ' WHERE id = ' . $id);
+		$stmt = self::$dbc->prepare('SELECT * FROM ' . static::$table . ' WHERE id = :id');
+		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
