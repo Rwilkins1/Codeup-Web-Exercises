@@ -53,16 +53,28 @@ class Model
 
 	protected function insert() 
 	{
-		$execution = self::$dbc->prepare('INSERT INTO ' . static::$table . ' (email, name, phone, address, city, state, zip) VALUES (:email, :name, :phone, :address, :city, :state, :zip)');
-			
-		$execution->bindValue(':email', $this->email, PDO::PARAM_STR);
-		$execution->bindValue(':name', $this->name, PDO::PARAM_STR);
-		$execution->bindValue(':phone', $this->phone, PDO::PARAM_STR);
-		$execution->bindValue(':address', $this->address, PDO::PARAM_STR);
-		$execution->bindValue(':city', $this->city, PDO::PARAM_STR);
-		$execution->bindValue(':state', $this->state, PDO::PARAM_STR);
-		$execution->bindValue(':zip', $this->zip, PDO::PARAM_STR);
-		$execution->execute();
+		$insertkeyarray = [];
+		$insertcolonarray = [];
+		foreach ($this->attributes as $key => $value) {
+			array_push($insertkeyarray, $key);
+			$insertcolonarray[] = ":" . $key;
+		}
+		$insertkeyinfo = implode(', ', $insertkeyarray);
+		$insertcoloninfo = implode(', ', $insertcolonarray);
+		$stmt = self::$dbc->prepare('INSERT INTO ' . static::$table . ' (' . $insertkeyinfo . ') VALUES (' . $insertcoloninfo . ')');
+		foreach ($this->attributes as $key => $value) {
+			$stmt->bindValue(":" . $key, $value, PDO::PARAM_STR);
+		}
+		$stmt->execute();
+
+		// $execution->bindValue(':email', $this->email, PDO::PARAM_STR);
+		// $execution->bindValue(':name', $this->name, PDO::PARAM_STR);
+		// $execution->bindValue(':phone', $this->phone, PDO::PARAM_STR);
+		// $execution->bindValue(':address', $this->address, PDO::PARAM_STR);
+		// $execution->bindValue(':city', $this->city, PDO::PARAM_STR);
+		// $execution->bindValue(':state', $this->state, PDO::PARAM_STR);
+		// $execution->bindValue(':zip', $this->zip, PDO::PARAM_STR);
+		// $execution->execute();
 	}
 
 	protected function update($id)
