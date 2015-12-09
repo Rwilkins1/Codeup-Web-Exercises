@@ -10,6 +10,7 @@ class Model
 		self::dbConnect();
 	}
 
+// Checks your connection
 	public static function dbConnect()
 	{
 		if (!self::$dbc)
@@ -21,6 +22,7 @@ class Model
 
 	}
 
+// Gets the value from a certain key
 	public function __get($key)
 	{
 		if (array_key_exists($key, $this->attributes)) {
@@ -30,11 +32,13 @@ class Model
 		return null;
 	}
 
+// Sets the values into the attributes array
 	public function __set($key, $value)
 	{
 		$this->attributes[$key] = $value;
 	}
 
+// Decides whether to update an entry or insert a new one
 	public function save()
 	{
 		if (!empty($this->attributes)) 
@@ -46,11 +50,10 @@ class Model
 			} else {
 				$this->insert();
 			}
-			
-			
 		}
 	}
 
+// Inserts a new entry into the database
 	protected function insert() 
 	{
 		$insertkeyarray = [];
@@ -66,17 +69,9 @@ class Model
 			$stmt->bindValue(":" . $key, $value, PDO::PARAM_STR);
 		}
 		$stmt->execute();
-
-		// $execution->bindValue(':email', $this->email, PDO::PARAM_STR);
-		// $execution->bindValue(':name', $this->name, PDO::PARAM_STR);
-		// $execution->bindValue(':phone', $this->phone, PDO::PARAM_STR);
-		// $execution->bindValue(':address', $this->address, PDO::PARAM_STR);
-		// $execution->bindValue(':city', $this->city, PDO::PARAM_STR);
-		// $execution->bindValue(':state', $this->state, PDO::PARAM_STR);
-		// $execution->bindValue(':zip', $this->zip, PDO::PARAM_STR);
-		// $execution->execute();
 	}
 
+// Updates an existing entry
 	protected function update($id)
 	{	
 		$updatedinfoarray = [];
@@ -94,12 +89,15 @@ class Model
         $stmt->execute();
 	}
 
+// Deletes all data with a set id
 	public static function delete($id)
 	{
 		self::dbConnect();
 		$stmt = self::$dbc->prepare('DELETE FROM ' . static::$table . ' WHERE id = ' . $id);
 		$stmt->execute();
 	}
+
+// Retrieves all data from a set id
 	public static function find($id)
 	{
 		self::dbConnect();
@@ -115,7 +113,8 @@ class Model
 		}
 		return $instance;
 	}
-	
+
+// Selects all records in the table
 	public static function all()
 	{
 		self::dbConnect();
