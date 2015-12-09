@@ -42,10 +42,8 @@ class Model
 			self::dbConnect();
 
 			if(isset($this->attributes['id'])) {
-				echo "This id is set already" . PHP_EOL;
 				$this->update($this->attributes['id']);
 			} else {
-				echo "This will be new";
 				$this->insert();
 			}
 			
@@ -75,7 +73,6 @@ class Model
             array_push($updatedinfoarray, $update);
         }
         $updatedinfo = implode(', ', $updatedinfoarray);
-        echo $updatedinfo;
         self::dbConnect();
         $stmt = self::$dbc->prepare('UPDATE contacts SET '. $updatedinfo .' WHERE id = '. $id);
         
@@ -85,6 +82,12 @@ class Model
         $stmt->execute();
 	}
 
+	public static function delete($id)
+	{
+		self::dbConnect();
+		$stmt = self::$dbc->prepare('DELETE FROM contacts WHERE id = ' . $id);
+		$stmt->execute();
+	}
 	public static function find($id)
 	{
 		self::dbConnect();

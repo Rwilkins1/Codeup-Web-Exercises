@@ -18,6 +18,8 @@ $user2 = User::find(3);
 $user2->name = "Hello Kitty";
 // $user2->phone = '123-4567';
 $user2->save();
+
+User::delete(3);
 // var_dump($user1->id);
 
 // print_r(User::find(3));
