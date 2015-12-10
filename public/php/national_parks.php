@@ -61,6 +61,7 @@
 // Checks to see if the inputs for the park insertion form are filled.
 	if(Input::notempty('parkname') && Input::notempty('parklocation') && Input::notempty('date') && Input::notempty('area') && Input::notempty('parkdescription')) {
 		try {
+			$errors = [];
 			insertpark($dbc);
 		} catch (Exception $e) {
 			array_push($errors, $e);
