@@ -29,9 +29,11 @@
 // Allows the user to insert a park
 	function insertpark($dbc)
 	{
+		$errors = [];
+
 		$name = Input::getString('parkname');
 		$location = Input::getString('parklocation');
-		$date = Input::getString('date');
+		$date = Input::getDate('date');
 		$area = Input::getNumber('area');
 		$description = Input::getString('parkdescription');
 
@@ -58,12 +60,22 @@
 
 // Checks to see if the inputs for the park insertion form are filled.
 	if(Input::notempty('parkname') && Input::notempty('parklocation') && Input::notempty('date') && Input::notempty('area') && Input::notempty('parkdescription')) {
-		insertpark($dbc);
+		try {
+			insertpark($dbc);
+		} catch (Exception $e) {
+			array_push($errors, $e);
+			echo $e->getMessage() . PHP_EOL;
+		}
 	}
 
 // Checks to see if the input for the park deletion form is filled.
 	if(Input::notempty('delete')) {
 		deletepark($dbc);
+	}
+
+	function getPost($field) 
+	{
+		return (isset($_POST[$field]) && $_POST[$field] != "" ? $_POST[$field] : "");
 	}
 ?>
 <!DOCTYPE html>
@@ -159,23 +171,23 @@
 		<form method = "POST" action = "national_parks.php">
 			<p>
 				<label for "parkname">Park Name</label>
-				<input type = "text" id = "parkname" name = "parkname">
+				<input type = "text" id = "parkname" name = "parkname" value="<?=getPost("parkname");?>">
 			</p>
 			<p>
 				<label for "parklocation">Location</label>
-				<input type = "text" id = "parklocation" name = "parklocation">
+				<input type = "text" id = "parklocation" name = "parklocation" value="<?=getPost("parklocation");?>">
 			</p>
 			<p>
 				<label for "date">Date Established</label>
-				<input type = "text" id = "date" name = "date">
+				<input type = "text" id = "date" name = "date" value="<?=getPost("date");?>">
 			</p>
 			<p>
 				<label for "area">Area (in Acres)</label>
-				<input type = "text" id = "area" name = "area">
+				<input type = "text" id = "area" name = "area" value="<?=getPost("area");?>">
 			</p>
 			<p>
 				<label for "parkdescription">Description</label>
-				<textarea id = "parkdescription" name = "parkdescription">Enter a short description of the park</textarea>
+				<textarea id = "parkdescription" name = "parkdescription" value="<?=getPost("parkdescription");?>">Enter a short description of the park</textarea>
 			</p>
 			<button type = "submit" value = "submit">Submit</button>
 		</form>
