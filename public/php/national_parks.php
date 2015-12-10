@@ -32,15 +32,15 @@
 		$name = Input::getString('parkname');
 		$location = Input::getString('parklocation');
 		$date = Input::getString('date');
-		$area = Input::getString('area');
+		$area = Input::getNumber('area');
 		$description = Input::getString('parkdescription');
 
 		$inner = 'INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)';
 		$query = $dbc->prepare($inner);
 		$query->bindValue(':name', $name, PDO::PARAM_STR);
 		$query->bindValue(':location', $location, PDO::PARAM_STR);
-		$query->bindValue(':date_established', $date, PDO::PARAM_STR);
-		$query->bindValue(':area_in_acres', $area, PDO::PARAM_STR);
+		$query->bindValue(':date_established', $date, PDO::PARAM_INT);
+		$query->bindValue(':area_in_acres', $area, PDO::PARAM_INT);
 		$query->bindValue(':description', $description, PDO::PARAM_STR);
 		$query->fetchAll(PDO::FETCH_ASSOC);
 		$query->execute();
