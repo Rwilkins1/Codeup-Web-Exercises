@@ -31,9 +31,20 @@ class Input
         $input = self::get($key);
         if (!is_string($input)) {
             throw new Exception('Your input must be a string!');
+        } else {
+            return $input;
         }
     }
 
+    public static function getNumber($key)
+    {
+        $input = self::get($key);
+        if(!is_numeric($input)) {
+            throw new Exception('Your input must be numeric!');
+        } else {
+            return $input;
+        }
+    }
     /**
      * Get a requested value from either $_POST or $_GET
      *
