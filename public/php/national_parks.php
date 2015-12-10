@@ -29,11 +29,11 @@
 // Allows the user to insert a park
 	function insertpark($dbc)
 	{
-		$name = Input::get('parkname');
-		$location = Input::get('parklocation');
-		$date = Input::get('date');
-		$area = Input::get('area');
-		$description = Input::get('parkdescription');
+		$name = Input::getString('parkname');
+		$location = Input::getString('parklocation');
+		$date = Input::getString('date');
+		$area = Input::getString('area');
+		$description = Input::getString('parkdescription');
 
 		$inner = 'INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)';
 		$query = $dbc->prepare($inner);
@@ -49,7 +49,7 @@
 // Allows the user to delete a park based on name
 	function deletepark($dbc)
 	{
-		$deletename = Input::get('delete');
+		$deletename = Input::getString('delete');
 		$deletequery = $dbc->prepare('DELETE FROM national_parks WHERE name = :name');
 		$deletequery->bindValue(':name', $deletename, PDO::PARAM_STR);
 		$deletequery->execute();
