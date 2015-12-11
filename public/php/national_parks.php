@@ -4,6 +4,7 @@
 	require '../../db_connect.php';
 	require '../../input.php';
 
+	$errors = [];
 // Sets the maximum number of pages depending on the row count
 	$maxrows = $dbc->query('SELECT COUNT(*) FROM national_parks');
 	$maxpagecount = $maxrows->fetch(PDO::FETCH_ASSOC);
@@ -29,8 +30,6 @@
 // Allows the user to insert a park
 	function insertpark($dbc)
 	{
-		$errors = [];
-
 		$name = Input::getString('parkname');
 		$location = Input::getString('parklocation');
 		$date = Input::getDate('date');
@@ -51,9 +50,9 @@
 // Allows the user to delete a park based on name
 	function deletepark($dbc)
 	{
-		$deletename = Input::getString('delete');
-		$deletequery = $dbc->prepare('DELETE FROM national_parks WHERE name = :name');
-		$deletequery->bindValue(':name', $deletename, PDO::PARAM_STR);
+		$deleteid = Input::getNumber('delete');
+		$deletequery = $dbc->prepare('DELETE FROM national_parks WHERE id = :id');
+		$deletequery->bindValue(':id', $deleteid, PDO::PARAM_INT);
 		$deletequery->execute();
 	
 	}
@@ -61,7 +60,6 @@
 // Checks to see if the inputs for the park insertion form are filled.
 	if(Input::notempty('parkname') && Input::notempty('parklocation') && Input::notempty('date') && Input::notempty('area') && Input::notempty('parkdescription')) {
 		try {
-			$errors = [];
 			insertpark($dbc);
 		} catch (Exception $e) {
 			array_push($errors, $e);
@@ -71,7 +69,12 @@
 
 // Checks to see if the input for the park deletion form is filled.
 	if(Input::notempty('delete')) {
-		deletepark($dbc);
+		try {
+			deletepark($dbc);
+		} catch (Exception $e) {
+			array_push($errors, $e);
+			echo $e->getMessage();
+		}
 	}
 
 	function getPost($field) 
@@ -126,6 +129,22 @@
 			background-color: gray;
 			box-shadow: 5px 5px 5px #444 inset;
 		}
+		form {
+			background-color: #444;
+			box-shadow: 5px 5px 5px black;
+			margin-top: -20px;
+		}
+		.formhead {
+			background-color: #444;
+			padding: 15px;
+			box-shadow: 5px 5px 5px black;
+		}
+		.formsubhead {
+			background-color: #444;
+			margin-top: -20px;
+			padding-bottom: 15px;
+			box-shadow: 5px 5px 5px black;
+		}
 	</style>
 </head>
 <body>
@@ -167,8 +186,8 @@
 			<a id = "home" href = "national_parks.php">Home</a>
 		<?php } ?>
 
-		<h2>Didn't find the Park you were looking for?</h2>
-		<h3>Fill in the information below</h3>
+		<h2 class = "formhead">Didn't find the Park you were looking for?</h2>
+		<h3 class = "formsubhead">Fill in the information below</h3>
 		<form method = "POST" action = "national_parks.php">
 			<p>
 				<label for "parkname">Park Name</label>
@@ -192,8 +211,8 @@
 			</p>
 			<button type = "submit" value = "submit">Submit</button>
 		</form>
-		<h2>Want to delete a Park?</h2>
-		<h3>Enter the park name below!</h3>
+		<h2 class = "formhead">Want to delete a Park?</h2>
+		<h3 class = "formsubhead">Enter the park ID below!</h3>
 		<form method = "POST" action = "national_parks.php">
 			<p>
 				<label for "delete">Park to Delete</label>
