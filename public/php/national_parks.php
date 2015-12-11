@@ -30,11 +30,11 @@
 // Allows the user to insert a park
 	function insertpark($dbc)
 	{
-		$name = Input::getString('parkname');
-		$location = Input::getString('parklocation');
-		$date = Input::getDate('date');
-		$area = Input::getNumber('area');
-		$description = Input::getString('parkdescription');
+		$name = Input::getString('parkname', 2, 100);
+		$location = Input::getString('parklocation', 2, 100);
+		$date = Input::getDate('date', '1776-07-04', '9999-01-01');
+		$area = Input::getNumber('area', 0, 1000000000000);
+		$description = Input::getString('parkdescription', 2, 10000);
 
 		$inner = 'INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)';
 		$query = $dbc->prepare($inner);
@@ -62,8 +62,8 @@
 		try {
 			insertpark($dbc);
 		} catch (Exception $e) {
-			array_push($errors, $e);
-			echo $e->getMessage() . PHP_EOL;
+			array_push($errors, $e->getMessage());
+			print_r($errors) . PHP_EOL;
 		}
 	}
 
@@ -72,8 +72,8 @@
 		try {
 			deletepark($dbc);
 		} catch (Exception $e) {
-			array_push($errors, $e);
-			echo $e->getMessage();
+			array_push($errors, $e->message());
+			echo $errors;
 		}
 	}
 
@@ -145,6 +145,17 @@
 			padding-bottom: 15px;
 			box-shadow: 5px 5px 5px black;
 		}
+		.delete {
+			background-color: black;
+			box-shadow: 2px 2px 2px gray inset;
+			color: red;
+			padding: 5px;
+			outline: none;
+		}
+		.delete:active {
+			background-color: gray;
+			box-shadow: 2px 2px 2px black inset;
+		}
 	</style>
 </head>
 <body>
@@ -166,6 +177,7 @@
 				<td><?=$parkarray['date_established']?></td>
 				<td><?=$parkarray['area_in_acres']?></td>
 				<td><?=$parkarray['description']?></td>
+				<td><button class = "delete">Delete</button></td>
 			</tr>
 			<?php } ?>
 	</table>
@@ -221,4 +233,11 @@
 			<button type = "submit" value = "submit">Delete</button>
 		</form>
 </body>
+	<script src = "../js/jquery.js"></script>
+	<script type="text/javascript">
+	"Use Strict";
+	$(".delete").click(function() {
+		alert("Are you sure you want to delete?");
+	});
+	</script>
 </html>
