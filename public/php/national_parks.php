@@ -50,11 +50,12 @@
 // Allows the user to delete a park based on name
 	function deletepark($dbc)
 	{
-		$deleteid = Input::getNumber('delete');
+		$deleteid = Input::getNumber('id');
 		$deletequery = $dbc->prepare('DELETE FROM national_parks WHERE id = :id');
 		$deletequery->bindValue(':id', $deleteid, PDO::PARAM_INT);
 		$deletequery->execute();
-	
+		header("location: national_parks.php");
+		die();
 	}
 
 // Checks to see if the inputs for the park insertion form are filled.
@@ -63,18 +64,13 @@
 			insertpark($dbc);
 		} catch (Exception $e) {
 			array_push($errors, $e->getMessage());
-			print_r($errors) . PHP_EOL;
+			echo $e->getMessage() . PHP_EOL;
 		}
 	}
 
 // Checks to see if the input for the park deletion form is filled.
-	if(Input::notempty('delete')) {
-		try {
+	if(Input::notempty('id')) {
 			deletepark($dbc);
-		} catch (Exception $e) {
-			array_push($errors, $e->message());
-			echo $errors;
-		}
 	}
 
 	function getPost($field) 
@@ -177,7 +173,7 @@
 				<td><?=$parkarray['date_established']?></td>
 				<td><?=$parkarray['area_in_acres']?></td>
 				<td><?=$parkarray['description']?></td>
-				<td><button class = "delete">Delete</button></td>
+				<td><button class = "delete" data-id="<?=$parkarray['id']?>" data-name="<?=$parkarray['name']?>">Delete</button></td>
 			</tr>
 			<?php } ?>
 	</table>
@@ -223,21 +219,20 @@
 			</p>
 			<button type = "submit" value = "submit">Submit</button>
 		</form>
-		<h2 class = "formhead">Want to delete a Park?</h2>
-		<h3 class = "formsubhead">Enter the park ID below!</h3>
-		<form method = "POST" action = "national_parks.php">
-			<p>
-				<label for "delete">Park to Delete</label>
-				<input type = "text" id = "delete" name = "delete">
-			</p>
-			<button type = "submit" value = "submit">Delete</button>
+		<form method ="post" id ="deletion">
+			<input type = "hidden" name = "id" id = "delete-id">
 		</form>
 </body>
 	<script src = "../js/jquery.js"></script>
 	<script type="text/javascript">
 	"Use Strict";
 	$(".delete").click(function() {
-		alert("Are you sure you want to delete?");
+		var parkid = $(this).data("id");
+		var parkname = $(this).data("name");
+		if (confirm("Are you sure you want to delete " + parkname + "?")) {
+			$("#delete-id").val(parkid);
+			$("#deletion").submit();
+		}
 	});
 	</script>
 </html>
