@@ -1,13 +1,10 @@
 var fs = require("fs");
 
-fs.readFile('input.txt', function(err, data) {
+console.log("Going to open file");
+
+fs.open('input.txt', 'r+', function(err, fd) {
 	if(err) {
 		return console.error(err);
 	}
-	console.log("Asynchronous read: " + data.toString());
+	console.log("File opened successfully!");
 });
-
-var data = fs.readFileSync('input.txt');
-console.log("Synchronous read: " + data.toString());
-
-console.log("Program Ended");
