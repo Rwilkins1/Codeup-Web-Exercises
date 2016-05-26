@@ -1,6 +1,12 @@
 var fs = require("fs");
-var zlib = require('zlib');
+var data = "Boy am I glad I know how to do node. I am so good at node that I can create a file out of thin air!";
 
-fs.createReadStream('input.txt.gz').pipe(zlib.createGunzip()).pipe(fs.createWriteStream('input.txt'));
+var writerStream = fs.createWriteStream('practice.txt');
 
-console.log("File Decompressed");
+writerStream.write(data, 'UTF8');
+
+writerStream.end();
+
+writerStream.on('finish', function() {
+	console.log("Write completed");
+});
