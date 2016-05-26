@@ -1,19 +1,17 @@
 var fs = require("fs");
-var data = '';
+var data = "Simple, Easy Learning";
 
-var readerStream = fs.createReadStream('input.txt');
+var writerStream = fs.createWriteStream('output.txt');
 
-readerStream.setEncoding('UTF8');
+writerStream.write(data, "UTF8");
 
-readerStream.on('data', function(chunk) {
-	data += chunk;
+writerStream.end();
+
+writerStream.on('finish', function() {
+	console.log("Write Completed");
 });
 
-readerStream.on('end', function() {
-	console.log(data);
-});
-
-readerStream.on('error', function() {
+writerStream.on('error', function(err) {
 	console.log(err.stack);
 });
 
