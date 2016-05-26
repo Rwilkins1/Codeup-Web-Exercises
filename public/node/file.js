@@ -1,17 +1,16 @@
 var fs = require("fs");
 
-console.log("Going to get the file info!");
-
-fs.stat('input.txt', function(err, stats) {
+console.log("Going to write into existing file");
+fs.writeFile('input.txt', 'Simple, Easy Learning', function(err) {
 	if(err) {
 		return console.error(err);
 	}
-	console.log(stats);
-	console.log("Got file info successfully!");
-
-	console.log("isFile ? " + stats.isFile());
-
-	console.log("isDirectory ? " + stats.isDirectory());
-
-	console.log("isSymbolicLink ? " + stats.isSymbolicLink());
+	console.log("Data Written Successfully!");
+	console.log("Let's read newly written data!");
+	fs.readFile('input.txt', function(err, data) {
+		if(err) {
+			return console.error(err);
+		}
+		console.log("Asynchronous read: " + data.toString());
+	});
 });
