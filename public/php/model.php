@@ -1,4 +1,5 @@
 <?php
+require_once '../../user_table_login.php';
 class Model
 {
 	public $attributes = array();
@@ -15,8 +16,7 @@ class Model
 	{
 		if (!self::$dbc)
 		{
-			require_once '../../user_table_login.php';
-			require_once '../../db_connect.php';
+			require '../../db_connect.php';
 			self::$dbc = $dbc;
 		} 
 
@@ -80,13 +80,12 @@ class Model
             array_push($updatedinfoarray, $update);
         }
         $updatedinfo = implode(', ', $updatedinfoarray);
-        self::dbConnect();
         $stmt = self::$dbc->prepare('UPDATE ' . static::$table . ' SET ' . $updatedinfo . ' WHERE id = :id');
       
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         
         foreach ($this->attributes as $key => $value) {
-            $stmt->bindValue(':'.$key, $this->attributes[$key], PDO::PARAM_STR);
+            $stmt->bindValue(':' . $key, $value, PDO::PARAM_STR);
         }
         $stmt->execute();
 	}

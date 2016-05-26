@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Two-L's Tools: Work like a Man, Feel like a Man, Shop like a Man</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<style type="text/css">
+		table {
+			background-image: url(/img/toolback.png);
+			background-repeat: no-repeat;
+		}
+
+		tr {
+			border: 3px solid black;
+		}
+
+		th {
+			border: 3px solid black;
+			font-size: 50px;
+		}
+
+		td {
+			border: 3px solid black;
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<h2 class="text-center">World like a Man, Feel like a Man, Shop like a Man.</h2>
+	<h4 class="text-center">Two-L's Tools</h4>
+
+<div class="col-lg-8 col-lg-offset-3">
+	<table id="products">
+		<button class="btn btn-primary" id="refresh">Refresh</button>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Categories</th>
+			</tr>
+		</thead>
+		<tbody id="insertProducts"></tbody>
+	</table>
+</div>
+
+	<script src="./ajax_store_files/jquery.min.js"></script>
+
+	<script>
+	(function() {
+		var products = $.get("/Data/inventory.json");
+		var table = $("#insertProducts");
+
+		// products.done(function() {
+		// 	alert("Everything went swimmingly!");
+		// }).fail(function() {
+		// 	alert("There was an error");
+		// }).always(function() {
+		// 	alert("Some bumps, but we did it!");
+		// });
+	
+		$("#refresh").click(function() {
+			table.html(" ");
+			inventory();
+			
+		});
+
+		function inventory() {
+			$.get("/Data/inventory.json").done(function(products) {
+				for(var i = 0; i < products.length; i++) {
+					table.append("<tr><td>" + products[i].title + "</td><td>" + products[i].quantity + "</td><td>" + products[i].price + "</td><td>" + products[i].categories + "</td></tr>");
+				}
+			});
+		}
+		inventory();
+	})();
+	</script>
+</body>
+</html>

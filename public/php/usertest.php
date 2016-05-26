@@ -3,7 +3,7 @@ require_once 'user.php';
 require_once '../../user_table_login.php';
 require_once '../../db_connect.php';
 
-$user1 = new User();
+$user1 = User::find(8);
 $user1->email = 'reagan.wilkins@gmail.com';
 $user1->name = 'Reagan Wilkins';
 $user1->phone = '(979)-224-0816';
@@ -20,7 +20,7 @@ $user2->name = "Hello Kitty";
 // $user2->phone = '123-4567';
 $user2->save();
 
-print_r(User::all());
+// print_r(User::all());
 // User::delete(3);
 // // var_dump($user1->id);
 

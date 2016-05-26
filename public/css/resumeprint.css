@@ -1,0 +1,8 @@
+@media print {
+.container {
+		background-color: #f1f1f1;
+}
+.heading {
+		color: #ff8000;
+}
+}

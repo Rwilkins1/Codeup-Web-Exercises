@@ -1,0 +1,27 @@
+
+	body {
+		font-family: Calibri;
+	}
+	.container {
+		background-color: #f1f1f1;
+	}
+	.toppart {
+		padding-bottom: 2%;
+		border-bottom: 1px solid black;
+	}
+	ul {
+		list-style-type: none;
+	}
+	.italic {
+		font-style: italic;
+	}
+	.date {
+		margin-left: 10%;
+	}
+	.smallhead {
+		margin-left: 100px;
+	}
+	.list {
+		margin-left: 100px;
+		margin-top: -15px;
+	}

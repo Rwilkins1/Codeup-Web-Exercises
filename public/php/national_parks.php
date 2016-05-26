@@ -5,6 +5,7 @@
 	require '../../input.php';
 
 	$errors = [];
+
 // Sets the maximum number of pages depending on the row count
 	$maxrows = $dbc->query('SELECT COUNT(*) FROM national_parks');
 	$maxpagecount = $maxrows->fetch(PDO::FETCH_ASSOC);
@@ -21,6 +22,8 @@
 		header('location: national_parks.php');
 		die();
 	}
+
+// Sets the offset to 1 less than the current page multiplied by 4. This was, on the first page, 1-1 = 0, 0 * 4 = 0, so there is no offset. 
 	$offset = (($page-1)*4);
 	$query->bindValue(':lim', 4, PDO::PARAM_INT);
 	$query->bindValue(':off', $offset, PDO::PARAM_INT);

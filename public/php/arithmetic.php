@@ -8,7 +8,7 @@ function add($a, $b)
 	if (is_numeric($a) && is_numeric($b)) {
     	return $a + $b;
     } else {
-    	return error($a, $b);
+    	return error($a, $b, 'regular');
     }
 }
 
@@ -17,7 +17,7 @@ function subtract($a, $b)
 	if (is_numeric($a) && is_numeric($b)) {
     	return $a - $b;
 	} else {
-		return error($a, $b);
+		return error($a, $b, 'regular');
 	}
 }
 
@@ -30,7 +30,7 @@ function multiply($a, $b)
 	    }
 	    return $i;
 	} else {
-		return error($a, $b);
+		return error($a, $b, 'regular');
 	}
 }
 
@@ -38,12 +38,12 @@ function divide($a, $b)
 {
 	if (is_numeric($a) && is_numeric($b)) {
 		if($a == 0 || $b == 0) {
-			return "WHAT ARE YOU TRYING TO DO?!";
+			return error($a, $b, 'zero');
 		} else {
     		return $a / $b;
     	}
     } else {
-    	return error($a, $b);
+    	return error($a, $b, 'regular');
     }
 }
 
@@ -52,14 +52,19 @@ function modulus($a, $b)
 	if (is_numeric($a) && is_numeric($b)) {
 		return $a % $b;
 	} else {
-		return error($a, $b);
+		return error($a, $b, 'regular');
 	}
 }
 
-function error($a, $b)
+function error($a, $b, $problem)
 {
-	return "Warning: Invalid Characters.\nFirst Argument is a(n) " . gettype($a) . " & Second Argument is a(n) " . gettype($b) . ".\nBoth arguments must be numeric";
+	if ($problem == 'regular') {
+		return "Warning: Invalid Characters.\nFirst Argument is a(n) " . gettype($a) . " & Second Argument is a(n) " . gettype($b) . ".\nBoth arguments must be numeric";
+	} else if ($problem == 'zero') {
+		return "Warning! You Cannot Divide by Zero!!!";
+	}
 }
+
 echo add($a, $b) . PHP_EOL;
 echo subtract($a, $b) . PHP_EOL;
 echo multiply("Hello", true) . PHP_EOL;

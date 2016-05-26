@@ -1,0 +1,88 @@
+<?php
+$stateinfo = [
+	['state' => 'Alabama', 'capital' => 'Montgomery', 'bird' => 'Yellowhammer'],
+];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>States Challenge</title>
+</head>
+<body>
+	<h1>States Challenge</h1>
+<script>
+	var states = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+
+	var capitals = ['Montgomery','Junea','Phoenix','Little Rock','Sacramento','Denver','Hartford','Dover','Tallahassee','Atlanta','Honolulu','Boise','Springfield','Indianopolis','Des Moines','Topeka','Frankfort','Baton Rouge','Augusta','Annapolis','Boston','Lansing','St. Paul','Jackson','Jefferson City','Helena','Lincoln','Carson City','Concord','Trenton','Santa Fe','Albany','Raleigh','Bismarck','Columbus','Oklahoma City','Salem','Harrisburg','Providence','Columbia','Pierre','Nashville','Austin','Salt Lake City','Montpelier','Richmond','Olympia','Charleston','Madison','Cheyennes'];
+
+	var birds = ['Yellowhammer','Willow Ptarmigan','Cactus Wren','Mockingbird','California Valley Quail','Lark Bunting','Robin','Blue Hen Chicken','Mockingbird','Brown Thrasher','Nene','Mountain Bluebird','Cardinal','Cardinal','Eastern Goldfinch','Western Meadowlark','Cardinal','Eastern Brown Pelican','Chickadee','Baltimore Oriole','Chickadee','Robin','Common Loon','Mockingbird','Bluebird','Western Meadowlark','Western Meadowlark','Mountain Bluebird','Purple Finch','Eastern Goldfinch','Roadrunner','Bluebird','Cardinal','Western Meadowlark','Cardinal','Scissor-tailed Flycatcher','Western Meadowlark','Ruffed Grouse','Rhode Island Red','Great Carolina Wren','Ring-necked Pheasant','Mockingbird','Mockingbird','Common American Gull','Hermit Thrush','Cardinal','Willow Goldfinch','Cardinal','Robin','Western Meadowlark'];
+
+	function liststates() {
+		console.log("These are all 50 States: ");
+		console.log(states);
+	}
+
+	function listcapitals() {
+		console.log("These are all the State Capitals: ");
+		console.log(capitals);
+	}
+
+	function listbirds() {
+		console.log("These are all the State Birds: ");
+		console.log(birds);
+	}
+
+	function searchstates() {
+		var statelet = prompt("Search for States by letter");
+			if (statelet = "a") {
+				alert(states[0] + ', ' + states[1] + ', ' + states[2] + ', ' + states[3]);
+			} else if (statelet = "c") {
+				alert(states[4 + 5 + 6]);
+			} else if (statelet = "d") {
+				alert(states[7]);
+			} else if (statelet = "f") {
+				alert(states[8]);
+			} else if (statelet = "g") {
+				alert(states[9]);
+			} else if (statelet = "h") {
+				alert(states[10]);
+			} else if (statelet = "i") {
+				alert(states[11, 12, 13, 14]);
+			} else if (statelet = "k") {
+				alert(states[15, 16]);
+			} else if (statelet = "l") {
+				alert(states[17]);
+			} else if (statelet = "m") {
+				alert(states[18, 19, 20, 21, 22, 23, 24, 25]);
+			} else if (statelet = "n") {
+				alert(states[26, 27, 28, 29, 30, 31, 32, 33]);
+			} else if (statelet = "o") {
+				alert(states[34, 35, 36]);
+			} else if (statelet = "p") {
+				alert(states[37]);
+			} else if (statelet = "r") {
+				alert(states[38]);
+			} else if (statelet = "s") {
+				alert(states[39, 40]);
+			} else if (statelet = "t") {
+				alert(states[41, 42]);
+			} else if (statelet = "u") {
+				alert(states[43]);
+			} else if (statelet = "v") {
+				alert(states[44, 45]);
+			} else if (statelet = "w") {
+				alert(states[46, 47, 48, 49]);
+			} else {
+				alert("No State starts with that letter");
+			}
+	}
+
+	searchstates();
+	
+
+	liststates();
+	listcapitals();
+	listbirds();
+</script>
+</body>
+</html>

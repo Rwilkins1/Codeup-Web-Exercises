@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Listeners practice</title>
+</head>
+<style type="text/css">
+#button {
+	border: 1px solid black;
+	height: 200px;
+	width: 300px;
+	background-color: black;
+	color: white;
+}
+</style>
+<body>
+
+	<div id="button">Click Me!</div>
+<script>
+(function () {
+
+	function Interview(company) {
+		this.company = company;
+	}
+
+	var newinterview = new Interview("SecureLogix");
+
+	console.log(newinterview.company);
+
+	var button = document.getElementById("button");
+
+	var listener = function() {
+		alert("You clicked me!");
+	}
+	button.addEventListener("click", listener, false);
+})();
+</script>
+</body>
+</html>

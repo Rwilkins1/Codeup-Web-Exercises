@@ -32,13 +32,15 @@ class Input
     {
         $input = self::get($key);
         if (!is_string($input)) {
-            throw new DomainException('Your input must be a string!');
+            throw new DomainException('Domain Exception: Your input must be a string!');
+        } else if(is_numeric($input)) {
+            throw new DomainException('Domain Exception: Your input must be a string!');
         } else if (empty($input)) {
-            throw new OutOfRangeException("An input is missing!");
+            throw new OutOfRangeException("Out of Range Exception: An input is missing!");
         } else if (strlen($input) < $min) {
-            throw new LengthException("Your string is too short");
+            throw new LengthException("Length Exception: Your string is too short");
         } else if (strlen($input) > $max && $max > 0) {
-            throw new LengthException("You string is too long");
+            throw new LengthException("Length Exception: You string is too long");
         } else {
             return $input;
         }
@@ -48,15 +50,15 @@ class Input
     {
         $input = self::get($key);
         if(!is_numeric($input) && !is_float($input)) {
-            throw new DomainException('Your input must be numeric!');
+            throw new DomainException('Domain Exception: Your input must be numeric!');
         } else if (empty($input)) {
-            throw new OutOfRangeException("An input is missing!");
+            throw new OutOfRangeException("Out of Range Exception: An input is missing!");
         } else if(($min != NULL && !is_numeric($min)) || ($max != NULL && !is_numeric($max))) {
             throw new InvalidArgumentException("Invalid Argument: Your min and max must both be numbers");
         } else if ($input < $min) {
-            throw new RangeException("Your input is too small");
+            throw new RangeException("Out of Specified Range: Your input is too small");
         } else if ($input > $max && $max > 0) {
-            throw new RangeException("Your input is too large");
+            throw new RangeException("Out of Specified Range: Your input is too large");
         } else {
             return $input;
         }
@@ -68,13 +70,13 @@ class Input
         $input = self::get($key);
         $input_time = date("Y-m-d", strtotime($input));
         if(!strtotime($input)) {
-            throw new Exception('You need to enter a valid date');
+            throw new Exception('Invalid Date: You need to enter a valid date');
         } else if (empty($input)) {
-            throw new OutOfRangeException("You are missing an input!");
+            throw new OutOfRangeException("Out of Range Exception: You are missing an input!");
         } else if ($input_time < $min) {
-            throw new DateRangeException('Your date is too early');
+            throw new DateRangeException('Out of Specified Range: Your date is too early');
         } else if ($input_time > $max) {
-            throw new DateRangeException('Your date is too late');
+            throw new DateRangeException('Out of Specified Range: Your date is too late');
         } else {
             return $input_time;
         }

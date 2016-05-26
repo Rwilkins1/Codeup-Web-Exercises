@@ -6,15 +6,16 @@ class Rectangle
 
 	public function __construct($height, $width)
 	{
-		$this->height = $height;
-		$this->width = $width;
+		$this->setheight($height);
+		$this->setwidth($width);
 	}
 
-	public function setheight($height)
+	protected function setheight($height)
 	{
 		$this->height = $height;
 	}
-	public function setwidth($width) 
+
+	protected function setwidth($width) 
 	{
 		$this->width = $width;
 	}

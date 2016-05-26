@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Poker</title>
+	<style type="text/css">
+	#start {
+		border: 1px solid black;
+		background-color: black;
+		color: white;
+	}
+	</style>
+</head>
+<body>
+
+<h3>Poker</h3>
+
+<div id="start">Start the game</div>
+
+<script>
+"use strict";
+
+var deck = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
+var suit = ["hearts", "clubs", "diamonds", "spades"];
+
+var myhand = [];
+var yourhand = [];
+var mynumbers = [];
+var mysuits = [];
+var myconsecutivecards = [];
+var mypairs = [];
+var mythrees = [];
+
+var yournumbers = [];
+var yoursuits = [];
+var myconsecutivesuits = [];
+var yourconsecutivecards = [];
+var yourconsecutivesuits = [];
+var yourpairs = [];
+var yourthrees = [];
+
+var button = document.getElementById("start");
+
+var startgame = function() {
+	for(var card = 0; card < 5; card++) {
+		addtomyhand();
+		addtoyourhand();
+	}
+	straight();
+	flush();
+	straight_flush();
+	of_a_kind();
+	console.log(myhand);
+	console.log(yourhand);
+}
+
+var addtomyhand = function() {
+	var deckrandomnumber = Math.floor(Math.random(0) * 13);
+	var suitrandomnumber = Math.floor(Math.random(0) * 4);
+	var cardtobeadded = deck[deckrandomnumber] + " of " + suit[suitrandomnumber];
+	console.log(cardtobeadded);
+	var checkyourdeck = yourhand.indexOf(cardtobeadded);
+	var checkmydeck = myhand.indexOf(cardtobeadded);
+	console.log(checkyourdeck);
+	console.log(checkmydeck);
+	if(checkyourdeck == -1 && checkmydeck == -1) {
+		if(deck[deckrandomnumber] == "Jack") {
+			mynumbers.push(11);
+		} else if(deck[deckrandomnumber] == "Queen") {
+			mynumbers.push(12);
+		} else if(deck[deckrandomnumber] == "King") {
+			mynumbers.push(13);
+		} else if(deck[deckrandomnumber] == "Ace") {
+			mynumbers.push(1);
+		} else {
+			mynumbers.push(deck[deckrandomnumber]);
+		}
+		mysuits.push(suit[suitrandomnumber]);
+		myhand.push(cardtobeadded);
+	} else {
+		addtomyhand();
+	}
+
+	
+	
+}
+
+var addtoyourhand = function() {
+	var deckrandomnumber = Math.floor(Math.random(0) * 13);
+	var suitrandomnumber = Math.floor(Math.random(0) * 4);
+	var cardtobeadded = deck[deckrandomnumber] + " of " + suit[suitrandomnumber];
+	console.log(cardtobeadded);
+	var checkyourdeck = yourhand.indexOf(cardtobeadded);
+	var checkmydeck = myhand.indexOf(cardtobeadded);
+	console.log(checkyourdeck);
+	console.log(checkmydeck);
+	if(checkyourdeck == -1 && checkmydeck == -1) {
+		if(deck[deckrandomnumber] == "Jack") {
+			yournumbers.push(11);
+		} else if(deck[deckrandomnumber] == "Queen") {
+			yournumbers.push(12);
+		} else if(deck[deckrandomnumber] == "King") {
+			yournumbers.push(13);
+		} else if(deck[deckrandomnumber] == "Ace") {
+			yournumbers.push(1);
+		} else {
+			yournumbers.push(deck[deckrandomnumber]);
+		}
+		yoursuits.push(suit[suitrandomnumber]);
+		yourhand.push(cardtobeadded);
+	} else {
+		addtoyourhand();
+	}
+	
+}
+
+var of_a_kind = function() {
+	var sorted = mynumbers.sort(function(a, b){return a-b});
+	console.log(sorted);
+	for(var g = 0; g < mynumbers.length; g++) {
+		if(mynumbers[g] == mynumbers[g + 1]) {
+			if(mynumbers[g] == mynumbers[g + 2]) {
+				if(mynumbers[g] == mynumbers[g + 3]) {
+					console.log("I got four of a kind");
+					// Todo: Recognize four of a kind when I set up points at the end of the game.
+				} else {
+					console.log("I got three of a kind");
+					mythrees.push(1);
+					g = g + 2;
+
+				}
+			} else {
+				console.log("I got a pair");
+				mypairs.push(1);
+				g = g + 1;
+			}
+		} else {
+			console.log("No matches");
+		}
+	}
+	if(mypairs.length == 1 && mythrees.length == 0) {
+		// Points for one pair
+	} else if(mythrees.length == 1 && mypairs.length == 0) {
+		// Points for one three of a kind
+	} else if(mypairs.length == 2) {
+		console.log("I got 2 pairs");
+		// Points
+	} else if(mypairs.length == 1 && mythrees.length == 1) {
+		console.log("I got a Full House");
+		// Points
+	}
+}
+
+// Determines whether or not a player got a flush
+var flush = function() {
+	// var myconsecutivesuits = [];
+	// var yourconsecutivesuits = [];
+
+	var myidealsuit = mysuits[0];
+	for(var j = 1; j <= mysuits.length; j++) {
+		if(mysuits[j] == myidealsuit) {
+			myconsecutivesuits.push[1];
+		}
+	}
+	if(myconsecutivesuits.length == 4) {
+		console.log("I got a flush");
+	} else {
+		console.log("I didn't get a flush");
+	}
+
+	var youridealsuit = yoursuits[0];
+	for(var j = 1; j <= yoursuits.length; j++) {
+		if(yoursuits[j] == youridealsuit) {
+			yourconsecutivesuits.push[1];
+		}
+	}
+	if(yourconsecutivesuits.length == 4) {
+		console.log("I got a flush");
+	} else {
+		console.log("I didn't get a flush");
+	}
+}
+
+
+// Determines whether or not a player got a straight. TODO: Implement code to recognize 1 and 13. 
+var straight = function() {
+	// var myconsecutivecards = [];
+	// var yourconsecutivecards = [];
+	mynumbers.sort(function(a, b){return a-b});
+	for(var i = 1; i <= mynumbers.length; i++) {
+		if((mynumbers[i] == (mynumbers[i - 1] + 1)) || ((mynumbers[i] == 1) && (mynumbers[i-1] == 13))) {
+			myconsecutivecards.push(1);
+		}
+	}
+	if(myconsecutivecards.length == 4) {
+		console.log("I got a straight");
+	} else {
+		console.log("I didn't get a straight");
+	}
+	yournumbers.sort(function(a, b){return a-b});
+	for(var i = 1; i <= yournumbers.length; i++) {
+		if((yournumbers[i] == (yournumbers[i - 1] + 1)) || ((yournumbers[i] == 1) && (yournumbers[i-1] == 13))) {
+			yourconsecutivecards.push(1);
+		}
+	}
+	if(yourconsecutivecards.length == 4) {
+		console.log("You got a straight");
+	} else {
+		console.log("You didn't get a straight");
+	}
+
+}
+
+// Determines whether or not the player got a straight flush
+var straight_flush = function() {
+	if(myconsecutivecards.length == 4 && myconsecutivesuits.length == 4) {
+		console.log("I got a straight flush");
+	} else {
+		console.log("I didn't get a straight flush");
+	}
+
+	if(yourconsecutivecards.length == 4 && yourconsecutivesuits.length == 4) {
+		console.log("You got a straight flush");
+	} else {
+		console.log("You didn't get a straight flush");
+	}
+}
+
+var myscore = function() {
+
+}
+
+var yourscore = function() {
+
+}
+
+button.addEventListener("click", startgame, false);
+</script>
+</body>
+</html>

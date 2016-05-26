@@ -1,7 +1,7 @@
 <?php 
 function pagecontroller() {
-	$adjectives = array("Swankey", "Culturally Insensative", "Starving", "Hipster", "Self-Righteous", "Slightly Above-Average", "Participation Award-Winning", "One-Eyed One-Horned Flying Purple", "Swaggariffic", "Psychoneuroendocrinological");
-	$nouns = array("Hipster", "Chartered Accountant", "Hypochondriac", "Otorhinolaryngologist", "Walrus", "Starburst", "Hello Kitty Fun Kart", "Gungan", "People Eater", "PTO Mom");
+	$adjectives = array("Swankey", "Culturally Insensative", "Starving", "Hipster", "Self-Righteous", "Slightly Above-Average", "Participation Award-Winning", "One-Eyed One-Horned Flying Purple", "Swaggariffic", "Psychoneuroendocrinological", "New Agey", "Sketchy", "Postmodern", "Enlightened", "Not ready for a relationship but then is dating somebody like, literally a day later");
+	$nouns = array("Hipster", "Chartered Accountant", "Hypochondriac", "Otorhinolaryngologist", "Walrus", "Starburst", "Hello Kitty Fun Kart", "Gungan", "People Eater", "PTO Mom", "Meninist", "Adam Sandler Movie", "Swaggarooney", "Sugar Plum Fairy", "Politician");
 	$adrand = array_rand($adjectives);
 	$norand = array_rand($nouns);
 	$name = $adjectives[$adrand] . " " . $nouns[$norand];
