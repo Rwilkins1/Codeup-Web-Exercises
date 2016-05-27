@@ -1,9 +1,9 @@
 var fs = require("fs");
 
-console.log("Going to delete an existing file");
-fs.unlink('practice.txt', function(err) {
-	if(err) {
-		return console.error(err);
-	}
-	console.log("File deleted successfully");
+console.log("Going to create directory /tmp/test");
+fs.mkdir('/tmp/test',function(err){
+   if (err) {
+       return console.error(err);
+   }
+   console.log("Directory created successfully!");
 });
