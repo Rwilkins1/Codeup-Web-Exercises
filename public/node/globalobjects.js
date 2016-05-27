@@ -2,4 +2,6 @@ function printHello() {
 	console.log("Hello, World!");
 }
 
-setTimeout(printHello, 2000);
+var t = setTimeout(printHello, 2000);
+
+clearTimeout(t);
