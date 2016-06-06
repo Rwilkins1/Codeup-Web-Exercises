@@ -1,4 +1,7 @@
-sum = lambda arg1, arg2: arg1 + arg2;
+def sum(arg1, arg2):
+	total = arg1 + arg2
+	print "Inside the function: ", total
+	return total;
 
-print "Value of total: ", sum(10, 20);
-print "value of total: ", sum(20, 20);
+total = sum(10, 20);
+print "Outside the function: ", total
