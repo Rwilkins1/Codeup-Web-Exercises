@@ -1,7 +1,8 @@
-def printme(str):
-	"This prints a passed string into this function"
-	print str
-	return;
+def changeme(list):
+	list.append([1,2,3,4]);
+	print "Values inside the function: ", list
+	return
 
-printme("I'm the first call to the function!")
-printme("I'm the second call to the function!")
+list = [10,20,30];
+changeme(list);
+print "Values outside the function: ", list
