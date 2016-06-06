@@ -1,7 +1,9 @@
-def printinfo(name="Billybob", age="35"):
-	print name + " is " + age + " years old";
+def printinfo(arg1, *vartuple):
+	print "Output is: "
+	print arg1
+	for var in vartuple:
+		print var
 	return;
 
-printinfo(age="50", name="Miki");
-printinfo(name="Miki");
-printinfo();
+printinfo(10)
+printinfo(70, 60, 50)
