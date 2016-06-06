@@ -1,9 +1,4 @@
-def printinfo(arg1, *vartuple):
-	print "Output is: "
-	print arg1
-	for var in vartuple:
-		print var
-	return;
+sum = lambda arg1, arg2: arg1 + arg2;
 
-printinfo(10)
-printinfo(70, 60, 50)
+print "Value of total: ", sum(10, 20);
+print "value of total: ", sum(20, 20);
