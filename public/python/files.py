@@ -1,3 +1,3 @@
 import os
 
-os.rename("foo.txt", "bar.txt");
+os.remove("bar.txt");
