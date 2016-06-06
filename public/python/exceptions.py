@@ -1,7 +1,8 @@
-def KelvinToFahrenheit(temp):
-	assert (temp >= 0), "Colder than absolute zero!"
-	return ((temp-273)*1.8)+32;
-
-print KelvinToFahrenheit(273)
-print KelvinToFahrenheit(505.78)
-print KelvinToFahrenheit(-5)
+try:
+	fh = open("testfile.txt", "w")
+	fh.write("This is my test file for exception handling!!")
+except IOError:
+	print "Erorr: cant find file or read data!"
+else:
+	print "Written content in the file successfully"
+	fh.close();
