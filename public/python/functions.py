@@ -1,8 +1,5 @@
-def changeme(list):
-	list = [1,2,3,4];
-	print "Values inside the function: ", list;
+def printme(str):
+	print str
 	return;
 
-list = [10,20,30]
-changeme(list);
-print "Values outside the function: ", list;
+printme();
