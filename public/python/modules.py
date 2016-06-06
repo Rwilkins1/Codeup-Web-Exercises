@@ -1,3 +1,3 @@
-from support import print_func
+from support import *
 
 print_func("Zara")
