@@ -1,3 +1,3 @@
 import os
 
-os.remove("bar.txt");
+os.mkdir("test");
