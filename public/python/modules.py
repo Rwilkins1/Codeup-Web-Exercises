@@ -1,3 +1,3 @@
-import support
+from support import print_func
 
-support.print_func("Zara")
+print_func("Zara")
