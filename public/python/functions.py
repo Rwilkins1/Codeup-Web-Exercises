@@ -2,4 +2,4 @@ def printme(str):
 	print str
 	return;
 
-printme();
+printme(str = "My String");
