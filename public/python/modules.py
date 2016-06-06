@@ -1,10 +1,5 @@
-Money = 2000
+import math;
 
-def AddMoney():
-	global Money;
-	Money = Money + 1;
-	print "Adding a dollar";
+content = dir(math);
 
-print Money
-AddMoney()
-print Money
+print content;
