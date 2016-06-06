@@ -1,5 +1,5 @@
-import math;
+import Phone
 
-content = dir(math);
-
-print content;
+Phone.Pots();
+Phone.Isdn();
+Phone.G3();
