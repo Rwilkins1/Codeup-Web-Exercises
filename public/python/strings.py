@@ -1,1 +1,1 @@
-print r'C:\\nowhere'
+print u'Hello, World!'
