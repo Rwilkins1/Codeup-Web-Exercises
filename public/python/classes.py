@@ -1,5 +1,6 @@
-from Child import *
+from Vector import *
 
-c = Child()
+v1 = Vector(2, 10)
+v2 = Vector(5, -2)
 
-c.myMethod()
+print v1 + v2
