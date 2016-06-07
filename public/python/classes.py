@@ -1,7 +1,9 @@
-from Employee import *
+from Point import *
 
-print "Employee.__doc__:", Employee.__doc__
-print "Employee.__name__:", Employee.__name__
-print "Employee.__module__:", Employee.__module__
-print "Employee.__bases__:", Employee.__bases__
-print "Employee.__dict__:", Employee.__dict__
+pt1 = Point()
+pt2 = pt1
+pt3 = pt1
+print id(pt1), id(pt2), id(pt3)
+del pt1
+del pt2
+del pt3
