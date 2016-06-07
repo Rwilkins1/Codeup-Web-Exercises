@@ -1,7 +1,7 @@
-def temp_convert(var):
-	try:
-		return int(var)
-	except ValueError, Argument:
-		print "The argument does not contain numbers\n", Argument
-	
-temp_convert("blah");
+def functionname(level):
+	if level <= 1:
+		raise "Invalid level!", level
+	else:
+		print "Level is greater than 1"
+
+functionname(1)
