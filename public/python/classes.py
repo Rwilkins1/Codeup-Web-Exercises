@@ -4,4 +4,4 @@ counter = JustCounter()
 counter.count()
 counter.count()
 
-print counter.__secretCount
+print counter._JustCounter__secretCount
