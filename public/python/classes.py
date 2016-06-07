@@ -1,6 +1,7 @@
-from Vector import *
+from JustCounter import *
 
-v1 = Vector(2, 10)
-v2 = Vector(5, -2)
+counter = JustCounter()
+counter.count()
+counter.count()
 
-print v1 + v2
+print counter.__secretCount
