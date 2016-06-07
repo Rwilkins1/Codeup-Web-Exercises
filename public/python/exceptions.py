@@ -1,9 +1,7 @@
-try:
-	fh = open("testfile.txt", "w")
+def temp_convert(var):
 	try:
-		fh.write("This is my test file for exception handling!!")
-	finally:
-		print "Going to close the file"
-		fh.close()
-except IOError:
-	print "Error: cannot find file or read data"
+		return int(var)
+	except ValueError, Argument:
+		print "The argument does not contain numbers\n", Argument
+	
+temp_convert("blah");
