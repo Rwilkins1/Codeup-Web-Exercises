@@ -1,7 +1,8 @@
-def functionname(level):
-	if level <= 1:
-		raise "Invalid level!", level
-	else:
-		print "Level is greater than 1"
+class Networkerror(RuntimeError):
+	def __init__(self, arg):
+		self.args = arg
 
-functionname(1)
+try:
+	raise Networkerror("Bad hostname")
+except Networkerror, e:
+	print e.args
