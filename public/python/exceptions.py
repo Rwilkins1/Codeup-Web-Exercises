@@ -1,8 +1,5 @@
 try:
-	fh = open("testfile.txt", "r")
-	fh.write("This is my test file for exception handling!!")
-except IOError:
-	print "Error: cant find file or read data"
-else:
-	print "Written content in the file successfully"
-	fh.close();
+	fh = open("test.txt", "w")
+	fh.write("This is my test file for exception handling!")
+finally:
+	print "Error: cannot find file or read data"
