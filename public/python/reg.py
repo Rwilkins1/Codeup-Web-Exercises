@@ -1,12 +1,15 @@
 import re
 
-line = "Dogs are better than cats";
+line = "Dogs are better than cats"
 
-searchObj = re.search(r'(.*) are (.*?) .*', line, re.M|re.I)
+match = re.match(r'cats', line, re.M|re.I)
+if match:
+	print "We've got a match!: ", match.group()
+else:
+	print "No match!"
 
-if searchObj:
-	print "searchObj.group(): ", searchObj.group();
-	print "searchObj.group(1): ", searchObj.group(1);
-	print "searchObj.group(2): ", searchObj.group(2);
+search = re.search(r'cats', line, re.M|re.I)
+if search:
+	print "We've got a result!: ", search.group()
 else:
 	print "Nothing found!"
