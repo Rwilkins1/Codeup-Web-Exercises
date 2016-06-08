@@ -1,15 +1,9 @@
 import re
 
-line = "Dogs are better than cats"
+phone = "2004-959-559 # This is a phone number!"
 
-match = re.match(r'cats', line, re.M|re.I)
-if match:
-	print "We've got a match!: ", match.group()
-else:
-	print "No match!"
+num = re.sub(r'#.*$', "", phone)
+print "Phone Num: ", num
 
-search = re.search(r'cats', line, re.M|re.I)
-if search:
-	print "We've got a result!: ", search.group()
-else:
-	print "Nothing found!"
+num = re.sub(r'\D', "", phone)
+print "Phone Num: ", num
