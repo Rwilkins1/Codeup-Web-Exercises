@@ -1,7 +1,10 @@
-# Hash Variables Exercise
+# Variable Context Exercise
 
-%data = ('Best Beatle', 'John', 'Worst Beatle', 'Ringo', 'Meh Beatle', 'George');
+@names = ("John Paul", "Lisa", "Kumar");
 
-print "\$data{'Best Beatle'} = $data{'Best Beatle'}\n";
-print "\$data{'Meh Beatle'} = $data{'Meh Beatle'}\n";
-print "\$data{'Worst Beatle'} = $data{'Worst Beatle'}\n";
+@copy = @names;
+
+$size = @names;
+
+print "Given names are: @copy\n";
+print "Number of names are: $size\n";
