@@ -1,6 +1,7 @@
-# Multiline Strings exercise
-$string = 'This is a
-multiple lined
-string';
+# Multiline Strings exercise - "Here" document syntax
 
-print "$string\n";
+print <<EOF;
+This is undoubtedly a
+multiple lined
+string
+EOF
