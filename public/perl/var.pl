@@ -7,4 +7,4 @@
 $size = @names;
 
 print "Given names are: @copy\n";
-print "Number of names are: $size\n";
+print "Number of names are: $size\n"
