@@ -1,11 +1,9 @@
-# Extracting Keys and values
+# Checking for existence
 
 %data = ('JohnPaul' => 45, 'Lisa' => 30, 'Kumar' => 40);
 
-@names = keys %data;
-
-@ages = values %data;
-
-print "$names[0] is $ages[0] years old\n";
-print "$names[1] is $ages[1] years old\n";
-print "$names[2] is $ages[2] years old\n";
+if(exists($data{'Lisa'})) {
+	print "Lisa is $data{'Lisa'} years old\n";
+} else {
+	print "I don't know Lisa's age!";
+}
