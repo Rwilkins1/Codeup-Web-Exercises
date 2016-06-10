@@ -1,4 +1,4 @@
-# Array Creation Exercise
+# Accessing Array Elements
 @array = qw/
 Monday
 Tuesday
@@ -9,4 +9,9 @@ Saturday
 Sunday
 /;
 
-print @array;
+print "$array[0]\n";
+print "$array[1]\n";
+print "$array[2]\n";
+print "$array[6]\n";
+print "$array[-1]\n";
+print "$array[-7]\n";

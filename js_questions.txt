@@ -1,0 +1,284 @@
+1) Which of the following is NOT a primitive data type in JavaScript?
+	a) Booleans
+	b) Arrays - correct
+	c) Numbers
+	d) Strings
+
+
+2) Which of the following will evaluate to TRUE?
+	a) 0
+	b) “"
+	c) !!true - correct
+	d) Both a and b
+
+3) Which of the following will yield the number 3?
+	a) “1” + 2
+	b) parseInt(“1”) + 2 - correct
+	c) “1” + parseInt(2)
+	d) “1” + “2”
+
+4) If var i = “true", which of the following “if” conditionals will return false? (Read what var i equals very carefully)
+	a) i = true
+	b) i == true
+	c) i === true
+	d) Both b and c - correct
+
+5) Lets say I’m writing a switch case. Which of the following is the correct syntax?
+	a) 
+		case “number” {
+			console.log(“You are a number”);
+		}
+	b) 
+		case “number”:
+			console.log(“You are a number”); - correct
+			break;
+	c) 
+		case “number”:
+			console.log(“You are a number”);
+			continue;
+	d) 
+		None of the above
+
+6) I'm writing a while loop to output every number between zero and ten. Which of the following will help me accomplish this goal?
+	a)
+		var i = 0;
+		while(i>10) {
+			console.log(i);
+			i++;
+		} 
+	b)
+		var i = 10;
+		while(i<10) {
+			console.log(i);
+		}
+	c) 
+		var i = 0;
+		while(i<10) {
+			console.log(i); - correct
+			i++;
+		}
+	d) 
+		var i = 0;
+		while(i<10) {
+			console.log(i);
+			i--;
+		}
+
+7) I'm trying to solve the same problem from the previous question, but this time with a for loop. Which one of these will help me solve this problem?
+	a) for(var i = 0; i > 10; i++);
+	b) for(var i = 0; i = 10; i++);
+	c) for(var i = 10; i < 10; i--);
+	d) for(var i = 0; i < 10; i++); - correct
+
+8) How should a "break" be used?
+	a) To stop all future iterations of a loop - correct
+	b) To cause a loop not to run for one iteration
+	c) To delay a loop by a set amount of iterations
+	d) None of the above
+
+9) How should a "continue" be used?
+	a) To cause a loop to run even when its conditions are not met
+	b) To execute the code inside the loop again without going to the next iteration.
+	c) To cause the loop to skip the current iteration and keep going. - correct
+	d) None of the above
+
+10) I am on a website, and all of a sudden, a window pops up asking me what my favorite color is! What kind of JavaScript dialogue function is this?
+	a) Alert
+	b) Confirm
+	c) Prompt - correct
+	d) Any of the above
+
+11) After telling a different pop up window that I don't want to claim my prize as the 1,000,000th site visitor, another window pops up asking me if I'm sure. What kind of JavaScript dialogue function is this?
+	a) Alert 
+	b) Confirm - correct
+	c) Prompt
+	d) Any of the above
+
+12) I'm on a craigslist clone site, and as the page loads, a window pops up asking me to enter my zip code! What kind of JavaScript dialogue function is this?
+	a) Alert
+	b) Confirm
+	c) Prompt - correct
+	d) Any of the above
+
+13) If I can access a JavaScript variable from the console, what scope is this variable in?
+	a) Local Scope
+	b) Global Scope - correct
+	c) Console Scope
+	d) Tele Scope
+
+14) Which of the following scopes should your JavaScript variables never be in?
+	a) Local Scope
+	b) Global Scope - correct
+	c) Micro Scope
+	d) All of the above
+
+15) What can you do to protect your variables from the answer to the previous problem?
+	a) Use an IIFE - correct
+	b) "Use Strict"
+	c) Create an array called "hidden" and make all your variables items in it.
+	d) Place the script tags at the bottom of the page (if using inline js)
+
+16) Which of the following best describes "Hoisting?"
+	a) Any variables declared within a function's scope will get declarations that are moved to the beginning of the function. - correct
+	b) All variables are defined at the bottom of the script so that functions can "hoist them up".
+	c) A cockney Englishman greeting the lead singer of The Police. 
+	d) Any variables declared within a function's scope will be copied by other functions in the script, making constant redeclaration of variables a must. 
+
+17) I can call a function before I declare it in JavaScript. What is this an example of?
+	a) A self-invoking function
+	b) Primitive data types
+	c) Hoisting - correct
+	d) None of the above
+
+18) I have an array: var array = ['John', 'Paul', 'George', 'Ringo', 'Santana']; 
+Which of the following will NOT return "George"?
+	a) array[2];
+	b) array[array.length - 2]; - correct
+	c) array[array.length - 3];
+	d) Both a and c
+
+19) Uh oh! I've accidentally included Santana on this array! Now I want to remove him. How can I do this?
+	a) array.shift();
+	b) array.pop(); - correct
+	c) All of the above
+	d) None of the above
+
+20) Now that I've gotten Santana off this array, I want to add in Yoko. How can I include Yoko in this array?
+	a) array.unshift();
+	b) array.push();
+	c) All of the above - correct
+	d) None of the above
+
+21) Lets say that I added Yoko to the array at the very end. Now I want to remove Ringo. How can I do this? Keep in mind, the array is now ['John', 'Paul', 'George', 'Ringo', 'Yoko'];
+	a) array.shift();
+	b) array.pop();
+	c) array.splice(array.indexOf('Ringo'), 1); - correct
+	d) All of the above
+
+22) Now I've decided I don't want this to be an array anymore. Now I want it to just be a large string. How can I do that?
+	a) array.split();
+	b) array.join(); - correct
+	c) array.string();
+	d) Both a and b
+
+23) How would I turn the newly created string from the previous quesiton back into an array?
+	a) array.split(); - correct
+	b) array.join();
+	c) array.array();
+	d) Both a and b
+
+24) I want to create a new Object called "band". Which of the following is a valid way to do this?
+	a) var band = new Object();
+	b) var band = ();
+	c) var band = {}
+	d) Both a and c - correct
+
+25) Now I want to create a "genre" property on the "band" object. Which of the following will let me do this?
+	a) var genre = "Metal";
+	b) band.genre = "Metal";
+	c) band['genre'] = "Metal";
+	d) Both b and c - correct;
+
+26) Say I've assigned a function on the "band" object:
+	band.shred = function() {
+		console.log("RAAAAAAAA");
+	}
+How can I get this function to run?
+	a) shred();
+	b) band.function();
+	c) band.shred();
+	d) None of the above
+
+27) Which of the following is the proper syntax to declare an object in JSON?
+	a) - correct
+		{
+			'name' : 'value',
+			'name2' : 'value2'
+		}
+	b)
+		[
+			'name' : 'value',
+			'name2' : 'value2'
+		]
+	c)
+		{
+			'name' : 'value';
+			'name2' : 'value2';
+		}
+	d) Both a and c
+
+28) Which of the following is the proper syntax to declare an array in JSON?
+	a)
+		{
+			'name' : 'value',
+			'name2' : 'value2'
+		}
+	b) - correct
+		[
+			'name' : 'value',
+			'name2' : 'value2'
+		]
+	c) var array = ('name' : 'value', 'name2' : 'value2');
+	d) Both a and c
+
+29) In order to use the "Math" object, I need to declare var math = new Math();
+	a) True
+	b) False - correct
+	c) Sometimes
+	d) Both a and c
+
+30) If I want to redirect the browser in JavaScript (no anchor tags), how would I do this?
+	a) browser.redirect('http://www.google.com');
+	b) location.redirect('http://www.google.com');
+	c) browser.location('http://www.google.com');
+	d) window.location('http://www.google.com'); - correct
+
+31) If I have an element on my page with an id of "foo", how can I "grab" it with JavaScript (think of the DOM)?
+	a) foo.get();
+	b) document.getElementWithId('foo');
+	c) document.getElementById('foo'); - correct
+	d) document.retrieve('foo');
+
+32) I have created an html form:
+<form name="login">
+    <div>
+        <label for="username">Username</label>
+        <input name="username" type="text">
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input name="password" type="password">
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+How can I "grab" the username input with JavaScript?
+	a) document.forms.login.username; - correct
+	b) document.getElementById('username');
+	c) document.getElementByName('login');
+	d) username.get();
+
+33) How can I display what the user puts in the username input, assuming that we assign the answer to the previous problem to var userinput?
+	a) console.log(userinput);
+	b) console.log(userinput.get());
+	c) console.log(userinput.value); - correct
+	d) console.log(document.getElementById(userinput));
+
+34) I have a plain HTML page
+<h1 id="main-heading">Hello World!</h1>
+<div id="main-section">
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+</div>
+Assuming that I grab "main-heading" h1 and assign it to var head, how can I change what the main-heading says?
+	a) head.content = "Hello, Kings!";
+	b) head.innerHTML = "Hello, Kings!"; - correct
+	c) head.innercontent = "Hello, Kings!";
+	d) Both b and c
+
+35) I have a button that I've grabbed and assigned to var button. When I click the button, I want the code inside of var happen to run. How can I accomplish this?
+	a) button.click("happen");
+	b) button.happen();
+	c) button.addClickEvent(happen, false);
+	d) button.addEventListener('click', happen, false);
