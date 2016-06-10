@@ -1,9 +1,21 @@
-# Array Size
-@array = (1, 2, 3);
-$array[50] = 4;
+# Adding and Removing elements
 
-$size = @array;
-$max_index = $#array;
+# Array creation
+@dogs = ("Black Labrador", "Border Collie", "Dachsund", "German Shepherd");
+print "1. \@dogs = @dogs\n";
 
-print "Size: $size\n";
-print "Max Index: $max_index\n";
+# Add one element at the end of the array
+push(@dogs, "Chihuahua");
+print "2. \@dogs = @dogs\n";
+
+# Add one element to the beginning of the array
+unshift(@dogs, "Pit Bull");
+print "3. \@dogs = @dogs\n";
+
+# Remove one element from the last of the array
+pop(@dogs);
+print "4. \@dogs = @dogs\n";
+
+# Remove one element from the beginning of the array
+shift(@dogs);
+print "5. \@dogs = @dogs\n";
