@@ -1,17 +1,8 @@
-# Accessing Array Elements
-@array = qw/
-Monday
-Tuesday
-Wednesday
-Thursday
-Friday
-Saturday
-Sunday
-/;
+# Sequential Numbers Array
+@var_10 = (1...10);
+@var_20 = (10...20);
+@var_abc = (a...z);
 
-print "$array[0]\n";
-print "$array[1]\n";
-print "$array[2]\n";
-print "$array[6]\n";
-print "$array[-1]\n";
-print "$array[-7]\n";
+print "@var_10\n";
+print "@var_20\n";
+print "@var_abc\n";
