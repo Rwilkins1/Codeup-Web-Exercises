@@ -1,13 +1,8 @@
-# Transform Arrays to Strings
+# Sort
 
-$string = "Rain-Drops-On-Roses-And-Whiskers-On-Kittens";
-$names = "Larry,David,Roger,Ken,Michael,Tom";
+@foods = qw(pizza steak chicken burgers);
+print "Before: @foods\n";
 
-@string = split('-', $string);
-@names = split(',', $names);
+@foods = sort(@foods);
 
-$string1 = join('-', @string);
-$string2 = join(',', @names);
-
-print "$string1\n";
-print "$string2\n";
+print "After: @foods\n";
