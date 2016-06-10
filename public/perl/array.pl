@@ -1,8 +1,7 @@
-# Sort
+# Merging arrays
+@odd = (1, 3, 5);
+@even = (2, 4, 6);
 
-@foods = qw(pizza steak chicken burgers);
-print "Before: @foods\n";
+@numbers = (@odd, @even);
 
-@foods = sort(@foods);
-
-print "After: @foods\n";
+print "Numbers = @numbers\n";
