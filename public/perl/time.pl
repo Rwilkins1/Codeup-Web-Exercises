@@ -1,6 +1,9 @@
-# Format date and time
-($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime();
+# Epoch time
+$datestring = localtime();
+print "Current date and time $datestring\n";
 
-printf("Time Format - HH:MM:SS\n");
-printf("%02d:%02d:%02d", $hour, $min, $sec);
+$epoc = time() - 12 * 60 * 60;
 
+$dateyest = localtime($epoc);
+
+print "Yesterday's date and time $dateyest\n";
