@@ -1,9 +1,11 @@
-# Checking for existence
+# Getting Hash Size
 
 %data = ('JohnPaul' => 45, 'Lisa' => 30, 'Kumar' => 40);
 
-if(exists($data{'Lisa'})) {
-	print "Lisa is $data{'Lisa'} years old\n";
-} else {
-	print "I don't know Lisa's age!";
-}
+@keys = keys %data;
+$size = @keys;
+print "1 - Hash size is $size\n";
+
+@values = values %data;
+$size = @values;
+print "2 - Hash Size is $size\n";
