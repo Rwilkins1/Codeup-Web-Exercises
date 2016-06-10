@@ -1,8 +1,9 @@
-# Sequential Numbers Array
-@var_10 = (1...10);
-@var_20 = (10...20);
-@var_abc = (a...z);
+# Array Size
+@array = (1, 2, 3);
+$array[50] = 4;
 
-print "@var_10\n";
-print "@var_20\n";
-print "@var_abc\n";
+$size = @array;
+$max_index = $#array;
+
+print "Size: $size\n";
+print "Max Index: $max_index\n";
