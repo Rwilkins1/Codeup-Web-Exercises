@@ -1,8 +1,7 @@
-# Accessing Hash Elements
-%data = ("Best Beatle" => "John", "Meh Beatle" => "George", "Worst Beatle" => "Ringo");
+# Extracting Slices
 
-print "The best Beatle is $data{'Best Beatle'}\n";
+%data = (-JohnPaul => 45, -Lisa => 30, -Kumar => 40);
 
-print "The meh Beatle is $data{'Meh Beatle'}\n";
+@array = @data{-JohnPaul, -Lisa};
 
-print "The worst Beatle is $data{'Worst Beatle'}\n";
+print "Array: @array\n";
