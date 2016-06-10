@@ -1,6 +1,6 @@
-# Array Slicing
+# Replacing Array Elements
+@nums = (1..20);
+print "Before - @nums\n";
 
-@days = ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
-@weekend = @days[5, 6];
-
-print "@weekend\n";
+splice(@nums, 5, 5, 21..25);
+print "After - @nums\n";
