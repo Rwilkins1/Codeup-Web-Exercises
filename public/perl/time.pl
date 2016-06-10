@@ -1,9 +1,9 @@
-# Epoch time
-$datestring = localtime();
-print "Current date and time $datestring\n";
+# POSIX function strftime();
 
-$epoc = time() - 12 * 60 * 60;
+use POSIX qw(strftime);
 
-$dateyest = localtime($epoc);
+$datestring = strftime "%a %b %e %H:%M:%S %Y", localtime;
+printf("date and time - $datestring\n");
 
-print "Yesterday's date and time $dateyest\n";
+$datestring = strftime "%a %b %e %H:%M:%S %Y", gmtime;
+printf("date and time - $datestring\n");
