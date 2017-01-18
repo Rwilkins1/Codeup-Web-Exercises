@@ -3,13 +3,35 @@
 	<title>Binary Converter</title>
 </head>
 <body>
-<form>
-	<input type="text" name="number">
-	<button>Convert</button>
+	<input type="text" id="input">
+	<button id="convert">Convert</button>
 	<div id="result"></div>
-</form>
-<script type="text/javascript" src="/js/jquery.js">
-
-</script>
 </body>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript">
+	var button = $("#convert");
+	var input = $("#input");
+	$("#convert").click(function() {
+		var total = 0;
+		var forminput = input.val();
+		var characters = forminput.split("");
+		characters.reverse();
+		var placenumber = function(place) {
+			if(place != 0) {
+				var number = Math.pow(2, place);
+				total += number;
+			} else {
+				total += 1;
+			}
+			$("#result").html(total);
+		}
+		for(var i = 0; i <= characters.length; i++) {
+			if(characters[i] == 1) {
+				placenumber(i);
+			}
+		}
+
+		
+	});
+</script>
 </html>
