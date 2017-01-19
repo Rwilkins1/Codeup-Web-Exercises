@@ -37,15 +37,20 @@
 		var total = [];
 		var fullnum = input.val()
 		var num = input.val();
+		var onetracker = 0;
 		for(var i = 0; i <= fullnum/2; i++) {
-			console.log(num);
-			if(Math.round(num) >= 1) {
+			if(Math.round(num) >= 1 && onetracker != 1) {
+				if(num == 1) {
+					onetracker = 1;
+				}
 				if(num % 2 != 0) {
+					console.log(num + "/2 is odd, so 1");
 					total.push("1");
 				} else {
+					console.log(num + "/2 is even, so 0");
 					total.push("0");
 				}
-				num = num/2;
+				num = Math.round(num/2);
 			}
 		}
 		total.reverse().join("");
