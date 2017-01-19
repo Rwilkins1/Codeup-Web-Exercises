@@ -34,7 +34,17 @@
 		
 	});
 	$("#converttobinary").click(function() {
-		
+		var total = 0;
+		var num = input.val();
+		for(var i = 0; i <= num/2; i++) {
+			if(num >= 1) {
+				if(num % 2 != 0) {
+					total += "1";
+				} else {
+					total += "0";
+				}
+			} 
+		}
 	});
 </script>
 </html>
