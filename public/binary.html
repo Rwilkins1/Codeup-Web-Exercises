@@ -4,14 +4,15 @@
 </head>
 <body>
 	<input type="text" id="input">
-	<button id="convert">Convert</button>
+	<button id="convertfrombinary">Convert from Binary</button>
+	<button id="converttobinary">Convert to Binary</button>
 	<div id="result"></div>
 </body>
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript">
 	var button = $("#convert");
 	var input = $("#input");
-	$("#convert").click(function() {
+	$("#convertfrombinary").click(function() {
 		var total = 0;
 		var forminput = input.val();
 		var characters = forminput.split("");
