@@ -38,6 +38,11 @@
 		var fullnum = input.val()
 		var num = input.val();
 		var onetracker = 0;
+		var oddtracker = 0;
+		if(num % 2 != 0) {
+			oddtracker = "1";
+			num = num - 1;
+		}
 		for(var i = 0; i <= fullnum/2; i++) {
 			if(Math.round(num) >= 1 && onetracker != 1) {
 				if(num == 1) {
@@ -53,7 +58,13 @@
 				num = Math.round(num/2);
 			}
 		}
-		total.reverse().join("");
+		if(oddtracker == "1") {
+			total.reverse();
+			total.push("1");
+			total.join("");
+		} else {
+			total.reverse().join("");
+		}
 		$("#result").html(total);
 	});
 </script>
