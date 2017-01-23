@@ -15,10 +15,14 @@
 		var total = 0;
 		var forminput = input.val();
 		var result = $("#result").html();
-		if(forminput == null) {
-			console.log("It worked");
+		if(forminput == null || forminput == "") {
+			if(result != null && result != "") {
+				console.log("There's something there");
+			} else {
+				console.log("There's not something there");
+			}
 		} else {
-
+			console.log("It didn't work");
 		}
 		var characters = forminput.split("");
 		characters.reverse();
