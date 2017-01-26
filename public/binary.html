@@ -39,12 +39,12 @@
 		var num = input.val();
 		var onetracker = 0;
 		var oddtracker = 0;
-		if(num % 2 != 0) {
-			oddtracker = "1";
-			num = num - 1;
-		}
+		// if(num % 2 != 0) {
+		// 	oddtracker = "1";
+		// 	num = num - 1;
+		// }
 		for(var i = 0; i <= fullnum/2; i++) {
-			if(Math.round(num) >= 1 && onetracker != 1) {
+			if(Math.floor(num) >= 1 && onetracker != 1) {
 				if(num == 1) {
 					onetracker = 1;
 				}
@@ -55,7 +55,7 @@
 					console.log(num + "/2 is even, so 0");
 					total.push("0");
 				}
-				num = Math.round(num/2);
+				num = Math.floor(num/2);
 			}
 		}
 		if(oddtracker == "1") {
