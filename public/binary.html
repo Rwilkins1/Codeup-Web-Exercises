@@ -76,7 +76,16 @@
 				var section = nums.splice(0, 4);
 				allsections.push(section);
 			}
-			
+			for(var j = 0; j < allsections.length; j++) {
+				var sec = allsections[j].reverse();
+				var sectiontotal = 0;
+				for(var k = 0; k < sec.length; k++) {
+					if(sec[k] == "1") {
+						sectiontotal += Math.pow(2, k);
+					}
+				}
+				total += pool[sectiontotal];
+			}
 		} else if(nums.length % 3 == 0) {
 
 		} else {
