@@ -6,7 +6,7 @@
 	<input type="text" id="input">
 	<button id="convertfrombinary">Convert from Binary</button>
 	<button id="converttobinary">Convert to Binary</button>
-	<button id="convertohex">Convert to Hexadecimal</button>
+	<button id="converttohex">Convert to Hexadecimal</button>
 	<div id="result"></div>
 </body>
 <script type="text/javascript" src="/js/jquery.js"></script>
@@ -68,7 +68,13 @@
 		var total = [];
 		var inputstring = input.val();
 		var nums = inputstring.split("");
-		console.log(nums);
+		if(nums.length % 4 == 0) {
+
+		} else if(nums.length % 3 == 0) {
+
+		} else {
+			
+		}
 	});
 </script>
 </html>
