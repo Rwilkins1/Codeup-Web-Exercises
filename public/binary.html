@@ -89,27 +89,11 @@
 			input.val(total);
 		}
 		if(nums.length % 4 == 0) {
-			// var whole = nums.length
-			// for(var i = 1; i <= whole/4; i++) {
-			// 	var section = nums.splice(0, 4);
-			// 	allsections.push(section);
-			// }
-			// for(var j = 0; j < allsections.length; j++) {
-			// 	var sec = allsections[j].reverse();
-			// 	var sectiontotal = 0;
-			// 	for(var k = 0; k < sec.length; k++) {
-			// 		if(sec[k] == "1") {
-			// 			sectiontotal += Math.pow(2, k);
-			// 		}
-			// 	}
-			// 	total += pool[sectiontotal];
-			// }
-			// input.val(total);
 			convert(4);
 		} else if(nums.length % 3 == 0) {
-
+			convert(3);
 		} else {
-
+			convert(nums.length);
 		}
 	});
 </script>
